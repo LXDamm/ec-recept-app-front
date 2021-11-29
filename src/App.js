@@ -7,11 +7,8 @@ import { UserLogin } from './components/User/UserLogin';
 function App() {
   return (
    <div className="appContainer">
-<<<<<<< HEAD
      <SideBar/>
-=======
      <UserLogin/>
->>>>>>> origin/main
      <StartPage />
    </div>
   );
