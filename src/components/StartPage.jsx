@@ -1,31 +1,68 @@
-
+import ReactStars from 'react-rating-stars-component';
 
 export const StartPage = () =>{
+
+    // TODO: detta ska ju då bytas ut mot data från backend sen
+    const recept = [
+        {
+            image: '',
+            title: 'Sausage Stuffing',
+            user: 'user1',
+            rating: 3
+        },
+        {
+            image: '',
+            title: 'second ',
+            user: 'user2',
+            rating: 4
+
+        },
+        {
+            image: '',
+            title: 'third',
+            user: 'user3',
+            rating: 1
+        },
+        {
+            image: '',
+            title: 'fourth',
+            user: 'user4',
+            rating: 2
+        },
+
+    ]
+
+    const ratingChanged = (newRating) =>{
+        console.log(newRating)
+    }
+
      return(
          <div className="container">
              <div className="header">
-                <h2 className="headerText">Recept</h2>
-                <form className="search">
-                <input lable="Sök recept" placeholder="Sök recept"></input>
-                </form>
-                
-                <h4>Logga in/registera</h4>
+                 <h1>Welcome to Mat Recept</h1>
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A magni eum eaque natus, qui sunt vel rerum excepturi culpa veritatis laboriosam error optio corrupti accusantium quo magnam suscipit eius dolor.</p>
              </div>
-             <div className="main">
-                <h3>Kycklinggryta</h3>
-                <p>En kycklinggryta som går snabbt att laga och är riktigt god!</p>
-                <p><strong>Ingredienser: </strong></p>
-                <div>
-                <ul>
-                    <li>Kyckling</li>
-                    <li>Paprika</li>
-                    <li>Grädde</li>
-                    <li>Svamp</li>
-                </ul>
-                <img src={'./images/shreyak-singh-0j4bisyPo3M-unsplash.jpg'} alt=''/>
-                </div>
+             <div className="cardContainer">
+                 {recept.map(item =>{
+                     return (
+                        <div className="card">
+                            <div className="topCard">
+                            <img src={item.image} alt="" />
+                            </div>
+                            <div className="bottomCard" >
+                                <div>
+                                <p><strong>{item.title}</strong></p>
+                                </div>
+                                <div className="ratingCard">
+                                <p>By: {item.user}</p>
+                                <ReactStars count={5} onChange={ratingChanged} size={16} activeColor='#ffd700' value={item.rating}/>
+                                </div>
+                                
+                            </div>
+                        </div>
+                     )
+                 })}
                 
-                <p><strong>Så här gör du:</strong><br></br>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, repellendus? Doloremque sequi at ea cum voluptates architecto libero atque nobis, laboriosam ratione. Sit eligendi nobis excepturi dignissimos, delectus totam aspernatur!</p>
              </div>
          </div>
      )
