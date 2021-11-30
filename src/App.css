@@ -47,7 +47,7 @@ input{
 }
 
 .sideBarContainer{
-  min-width: 20%;
+  width: 20%;
   min-height: 100vh;
   background-color: #1E1E1E;
   color: white;
@@ -112,4 +112,13 @@ input{
 
 .bottomCard{
   padding: 5px;
+}
+
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:focus{
+  text-decoration: underline;
 }
