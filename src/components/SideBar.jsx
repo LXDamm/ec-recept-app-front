@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright, faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import {Link} from 'react-router-dom';
 
+
 export const SideBar = () =>{
     return (
     <div className="sideBarContainer">
