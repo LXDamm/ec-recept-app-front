@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright, faUserCircle } from "@fortawesome/free-regular-svg-icons"; 
 
+
 export const SideBar = () =>{
     return (
     <div className="sideBarContainer">

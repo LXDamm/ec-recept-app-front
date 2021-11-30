@@ -34,7 +34,7 @@ export const UserLogin = () =>{
                         <label htmlFor="chk" aria-hidden="true"> Login </label>
                         <input type="email" name="email" placeholder="Email" required onChange={(e)=>setMail(e.target.value)}/>
                         <input type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)} required/>
-                        <button>Sign up</button>
+                        <button>Sign in</button>
                     </form>
                 </div>
             </div>
