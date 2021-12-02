@@ -1,6 +1,32 @@
+import { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
+import { useParams } from 'react-router';
 
 export const SingleRecept = () =>{
+    const [singleRecipe, setSingleRecipe] = useState('')
+    const {id} = useParams()
+
+    useEffect(()=>{
+        const url = `http://localhost:3030/recipe/${id}`
+
+    const fetchData = async () =>{
+      try{
+        const response = await fetch(url);
+        const json = await response.json();
+        
+        setSingleRecipe(json)
+
+      }catch(error){
+        console.log('error', error)
+      }
+    }
+    fetchData()
+    }, [])
+
+    
+
+    console.log(singleRecipe.ingredients)
+    
     return(
         <div>
             <div className="album-box">
@@ -33,11 +59,12 @@ export const SingleRecept = () =>{
                 <div className="recept-box">
                     <div className="left-box">
                         <div className="recept-title">
-                            <h2>Sausage Stuffing</h2>
+                            <h2>{singleRecipe.title}</h2>
                         </div>
                         
                         <div className="recept-description">
-                            <p>
+                            <p>{singleRecipe.description}</p>
+                            {/* <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
                             <br />
@@ -46,12 +73,12 @@ export const SingleRecept = () =>{
                             <br/>
                             <br/>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                            </p>
+                            </p> */}
                         </div>
                     </div>
                     <div className="right-box">
                         <div className="rate-box">
-                        <ReactStars count={5} size={16} activeColor='#ffd700' value="2.5"/>
+                        <ReactStars count={5} size={16} activeColor='#ffd700' value={singleRecipe?.rating}/>
                         </div>
                         <div className="ingredients-box">
                             <h3>
@@ -60,13 +87,17 @@ export const SingleRecept = () =>{
                         </div>
                         <div className="ingredients-text">
                             <ul>
-                                <li>1 pound breakfast sausage</li>
+                                {singleRecipe.ingredients?.map(item =>{
+                                    return <li>{item}</li>
+                                })}
+                                
+                                {/* <li>1 pound breakfast sausage</li>
                                 <li>¾ cup chopped onion</li>
                                 <li>1 ½ cups finely diced celery</li>
                                 <li>¾ cup margarine, melted</li>
                                 <li>8 cups white bread cubes</li>
                                 <li>3 teaspoons poultry seasoning</li>
-                                <li>¼ teaspoon ground black pepper</li>
+                                <li>¼ teaspoon ground black pepper</li> */}
                             </ul>
 
                         </div>

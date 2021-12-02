@@ -200,3 +200,7 @@ a{
 a:focus{
   text-decoration: underline;
 }
+
+a .card{
+  color: black;
+}
