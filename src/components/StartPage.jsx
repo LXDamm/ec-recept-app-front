@@ -1,9 +1,30 @@
 import ReactStars from 'react-rating-stars-component';
+import {useEffect, useState} from 'react';
+import {Link} from 'react-router-dom';
 
-export const StartPage = () =>{
+export const StartPage = ({recept}) =>{
+    
 
+   /*  const [recipe, setRecipe] = useState('')
+    useEffect(() =>{
+        const url = "http://localhost:3030/recipe"
+    
+        const fetchData = async () =>{
+          try{
+            const response = await fetch(url);
+            const json = await response.json();
+            setRecipe(json)
+    
+          }catch(error){
+            console.log('error', error)
+          }
+        }
+        fetchData()
+      },[]) */
+
+    
     // TODO: detta ska ju då bytas ut mot data från backend sen
-    const recept = [
+   /*  const recept = [
         {
             image: '',
             title: 'Sausage Stuffing',
@@ -30,11 +51,13 @@ export const StartPage = () =>{
             rating: 2
         },
 
-    ]
+    ] */
 
     const ratingChanged = (newRating) =>{
         console.log(newRating)
     }
+
+   
 
      return(
          <div className="container">
@@ -43,9 +66,9 @@ export const StartPage = () =>{
                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A magni eum eaque natus, qui sunt vel rerum excepturi culpa veritatis laboriosam error optio corrupti accusantium quo magnam suscipit eius dolor.</p>
              </div>
              <div className="cardContainer">
-                 {recept.map(item =>{
+                 {recept !== '' ? recept.map(item =>{
                      return (
-                        <div className="card">
+                        <Link to={`/Singlerecept/${item.id}`} > <div className="card">
                             <div className="topCard">
                             <img src={item.image} alt="" />
                             </div>
@@ -60,8 +83,9 @@ export const StartPage = () =>{
                                 
                             </div>
                         </div>
+                        </Link>
                      )
-                 })}
+                 }): null}
                 
              </div>
          </div>
