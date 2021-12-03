@@ -9,6 +9,7 @@ import { SingleRecept } from './components/SingleRecept'
 function App() {
 
   const [recipe, setRecipe] = useState('')
+  const [allUsers, setAllUsers] = useState('')
   
 
   useEffect(() =>{
@@ -27,6 +28,25 @@ function App() {
     }
     fetchData()
   },[])
+
+  useEffect(() =>{
+    const url = "http://localhost:3030/user"
+
+    const fetchData = async () =>{
+      try{
+        const response = await fetch(url);
+        const json = await response.json();
+        setAllUsers(json)
+        
+
+      }catch(error){
+        console.log('error', error)
+      }
+    }
+    fetchData()
+  },[])
+
+  console.log(allUsers)
 
   return (
     <div className="appContainer">

@@ -15,6 +15,7 @@ export const SingleRecept = () =>{
         const json = await response.json();
         
         setSingleRecipe(json)
+        console.log(singleRecipe)
 
       }catch(error){
         console.log('error', error)
@@ -25,7 +26,7 @@ export const SingleRecept = () =>{
 
     
 
-    console.log(singleRecipe.ingredients)
+    
     
     return(
         <div>
