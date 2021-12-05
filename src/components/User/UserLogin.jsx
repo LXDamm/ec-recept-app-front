@@ -19,22 +19,22 @@ export const UserLogin = () =>{
     return(
         <div className="user-container">
             <div className="user-main">
-                <input type="checkbox" id="chk" aria-hidden="true"/>
+                <input className="member-input" type="checkbox" id="chk" aria-hidden="true"/>
                 <div className="signup">
                     <form onSubmit={register}>
                         <label htmlFor="chk" aria-hidden="true">Sign up</label>
-                        <input type="text" name="text" placeholder="Username" onChange={(e)=>setUserName(e.target.value)} required/>
-                        <input type="email" name="email" placeholder="Email" onChange={(e)=>setMail(e.target.value)} required/>
-                        <input type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)}/>
-                        <button>Sign up</button>
+                        <input className="member-input" type="text" name="text" placeholder="Username" onChange={(e)=>setUserName(e.target.value)} required/>
+                        <input className="member-input" type="email" name="email" placeholder="Email" onChange={(e)=>setMail(e.target.value)} required/>
+                        <input className="member-input" type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)}/>
+                        <button className="member-btn">Sign up</button>
                     </form>
                 </div>
                 <div className="login">
                     <form onSubmit={login}>
                         <label htmlFor="chk" aria-hidden="true"> Login </label>
-                        <input type="email" name="email" placeholder="Email" required onChange={(e)=>setMail(e.target.value)}/>
-                        <input type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)} required/>
-                        <button>Sign in</button>
+                        <input className="member-input" type="email" name="email" placeholder="Email" required onChange={(e)=>setMail(e.target.value)}/>
+                        <input className="member-input" type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)} required/>
+                        <button className="member-btn">Sign in</button>
                     </form>
                 </div>
             </div>

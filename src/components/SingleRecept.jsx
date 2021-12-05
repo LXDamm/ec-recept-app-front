@@ -29,30 +29,14 @@ export const SingleRecept = () =>{
     
     return(
         <div>
-            <div className="album-box">
-            <ul className="image-gallery">
-                <li>
-                    <img src="image 2.jpg" alt=""/>
-                </li>
-                <li>
-                    <img src="image-3.jpg" alt=""/>
-                </li>
-                <li>
-                    <img src="image-4.jpg" alt=""/>
-                </li>
-                <li>
-                    <img src="image-5.jpg" alt=""/>
-                </li>
-                <li>
-                    <img src="image-8.jpg" alt=""/>
-                </li>
-                <li>
-                    <img src="image-9.jpg" alt=""/>
-                </li>
-                <li>
-                    <img src="image-10.jpg" alt=""/>
-                </li>
-            </ul>
+            <div className="row bg-secondary p-2">
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image 2.jpg" alt=""/></div>
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image-3.jpg" alt=""/></div>
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image-4.jpg" alt=""/></div>
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image-5.jpg" alt=""/></div>
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image-8.jpg" alt=""/></div>
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image-9.jpg" alt=""/></div>
+                    <div className="col p-1"><img className="rounded shadow-sm" src="image-10.jpg" alt=""/></div>     
                 </div>
             <div className="single-recept-container">
                 
@@ -81,9 +65,9 @@ export const SingleRecept = () =>{
                         <ReactStars count={5} size={16} activeColor='#ffd700' value={singleRecipe?.rating}/>
                         </div>
                         <div className="ingredients-box">
-                            <h3>
+                            <h6>
                             Ingredients
-                            </h3>
+                            </h6>
                         </div>
                         <div className="ingredients-text">
                             <ul>
@@ -105,38 +89,38 @@ export const SingleRecept = () =>{
                 </div>
                 <div className="comment-box">
                     <div className="comment-title">
-                        <h2>Comments</h2>
+                        <h4>Comments</h4>
                     </div>
                     <div className="comment-form">
                         <form>
                             <div className="name-email-box">
-                                <input className="name-input" type="text" placeholder="Your Name"/>
-                                <input className="email-input" type="text" placeholder="Your Email"/>
+                                <input className="name-input form-control" type="text" placeholder="Your Name"/>
+                                <input className="email-input form-control" type="text" placeholder="Your Email"/>
                             </div>
-                            <textarea class="comment-textarea" type="textbox" placeholder="comment"/>
-                            <div className="send-btn-box"><button className="send-btn">Send</button></div>
+                            <textarea class="comment-textarea form-control" type="textbox" placeholder="comment"/>
+                            <div className="send-btn-box"><button className="member-btn send-btn">Send</button></div>
                            
                         </form>
                     </div>
                     <div className="comments-show">
-                        <h2>Comments</h2>
+                        <h4>Comments</h4>
                         <ul className="comment-user-box">
                             <li>
-                                <h5>User 1</h5>
+                                <h6 className="p-2">User 1</h6>
                                 <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
                                 </p>
                             </li>
                             <li>
-                                <h5>User 1</h5>
+                                <h6 className="p-2">User 1</h6>
                                 <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
                                 </p>
                             </li>
                             <li>
-                                <h5>User 1</h5>
+                                <h6 className="p-2">User 11</h6>
                                 <p>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.

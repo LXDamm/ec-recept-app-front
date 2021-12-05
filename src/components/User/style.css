@@ -28,25 +28,25 @@ label{
     color: #fff;
 	font-size: 2.3em;
 	justify-content: center;
-	display: flex;
-	margin: 60px;
+	display: flex !important;
+	margin: 40px;
 	font-weight: bold;
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
-input{
+.member-input{
 	width: 60%;
-	height: 20px;
-	background: #e0dede;
+/* 	height: 20px !important;
+ */	background: #e0dede;
 	justify-content: center;
 	display: flex;
-	margin: 20px auto;
-	padding: 10px;
+	margin: 20px auto !important;
+	padding: 10px !important;
 	border: none;
 	outline: none;
 	border-radius: 5px;
 }
-button{
+.member-btn{
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -63,14 +63,14 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
+.member-btn:hover{
 	background: #119749;
 }
 .login{
     height: 460px;
 	background: #eee;
 	border-radius: 60% / 10%;
-	transform: translateY(-180px);
+	transform: translateY(-150px);
 	transition: .8s ease-in-out;
 }
 .login label{
