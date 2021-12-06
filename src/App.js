@@ -19,6 +19,7 @@ function App() {
           setTabletSize(false)
       }
   }
+  const [allUsers, setAllUsers] = useState('')
   
 
 
@@ -39,6 +40,26 @@ function App() {
       }
       fetchData()
     },[])
+
+  useEffect(() =>{
+    const url = "http://localhost:3030/user"
+
+    const fetchData = async () =>{
+      try{
+        const response = await fetch(url);
+        const json = await response.json();
+        setAllUsers(json)
+        
+
+      }catch(error){
+        console.log('error', error)
+      }
+    }
+    fetchData()
+  },[])
+
+  console.log(allUsers)
+
   return (
         <div className="container-fluid">
           <Router>

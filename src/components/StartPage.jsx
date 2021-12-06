@@ -4,53 +4,7 @@ import {Link} from 'react-router-dom';
 
 export const StartPage = ({recept}) =>{
 
-   /*  const [recipe, setRecipe] = useState('')
-    useEffect(() =>{
-        const url = "http://localhost:3030/recipe"
-    
-        const fetchData = async () =>{
-          try{
-            const response = await fetch(url);
-            const json = await response.json();
-            setRecipe(json)
-    
-          }catch(error){
-            console.log('error', error)
-          }
-        }
-        fetchData()
-      },[]) */
-
-    
-    // TODO: detta ska ju då bytas ut mot data från backend sen
-   /*  const recept = [
-        {
-            image: '',
-            title: 'Sausage Stuffing',
-            user: 'user1',
-            rating: 3
-        },
-        {
-            image: '',
-            title: 'second ',
-            user: 'user2',
-            rating: 4
-
-        },
-        {
-            image: '',
-            title: 'third',
-            user: 'user3',
-            rating: 1
-        },
-        {
-            image: '',
-            title: 'fourth',
-            user: 'user4',
-            rating: 2
-        },
-
-    ] */
+  
 
     const ratingChanged = (newRating) =>{
         console.log(newRating)
