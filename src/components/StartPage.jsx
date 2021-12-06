@@ -1,18 +1,14 @@
 import ReactStars from 'react-rating-stars-component';
-import {useEffect, useState} from 'react';
+/* import {useEffect, useState} from 'react'; */
 import {Link} from 'react-router-dom';
 
 export const StartPage = ({recept}) =>{
-    
 
   
 
     const ratingChanged = (newRating) =>{
         console.log(newRating)
     }
-
-    console.log(recept)
-   
 
      return(
          <div className="container">
@@ -23,26 +19,27 @@ export const StartPage = ({recept}) =>{
              <div className="cardContainer">
                  {recept !== '' ? recept.map(item =>{
                      return (
-                        <Link to={`/Singlerecept/${item.id}`} > <div className="card">
-                            <div className="topCard">
-                            <img src={item.image} alt="" />
-                            </div>
-                            <div className="bottomCard" >
-                                <div>
-                                <p><strong>{item.title}</strong></p>
+                        <Link to={`/Singlerecept/${item.id}`} > 
+                            <div className="card">
+                                <div className="topCard">
+                                <img src={item.image} alt="" />
                                 </div>
-                                <div className="ratingCard">
-                                <p>By: {item.user}</p>
-                                <ReactStars count={5} onChange={ratingChanged} size={16} activeColor='#ffd700' value={item.rating}/>
+                                <div className="bottomCard" >
+                                    <div>
+                                    <p><strong>{item.title}</strong></p>
+                                    </div>
+                                    <div className="ratingCard">
+                                    <p>By: {item.user}</p>
+                                    <ReactStars count={5} onChange={ratingChanged} size={16} activeColor='#ffd700' value={item.rating}/>
+                                    </div>
+                                    
                                 </div>
-                                
                             </div>
-                        </div>
                         </Link>
                      )
                  }): null}
                 
-             </div>
+            </div>
          </div>
      )
 }
