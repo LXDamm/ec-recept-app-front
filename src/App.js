@@ -69,7 +69,7 @@ function App() {
               <Routes>
                   <Route exact path="/" element={<StartPage recept={recipe}/>} />
                   <Route path="/Member" element={<UserLogin/>} />
-                  <Route path="/Singlerecept" element={<SingleRecept/>} />
+                  <Route path="/Singlerecept/:id" element={<SingleRecept/>} />
                 </Routes>
               </div>
             </div>
