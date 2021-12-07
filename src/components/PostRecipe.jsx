@@ -1,4 +1,5 @@
 import { useState } from "react";
+import api from "../api/api";
 
 export const PostRecipe = () => {
     const [formTitle, setFormTitle] = useState(undefined);
@@ -12,13 +13,13 @@ export const PostRecipe = () => {
     const [instructions, setInstructions] = useState([]);
 
     const renderCategoriesListItems = categories.map((category) => {
-        return (<li key={category}><p className="categories-list-item">{category}</p></li>);
+        return (<li key={category} className="categories-list-item"><p>{category}</p></li>);
     });
     const renderIngredientsListItems = ingredients.map((ingredient) => {
-        return (<li key={ingredient}><p className="ingredients-list-item">{ingredient}</p></li>);
+        return (<li key={ingredient} className="ingredients-list-item"><p>{ingredient}</p></li>);
     });
     const renderInstructionsListItems = instructions.map((instruction) => {
-        return (<li key={instruction}><p className="instruction-list-item">{instruction}</p></li>);
+        return (<li key={instruction} className="instruction-list-item"><p>{instruction}</p></li>);
     });
 
     const addCategoryItemToList = (event, value) => {
@@ -33,14 +34,17 @@ export const PostRecipe = () => {
         event.preventDefault();
         setInstructions([...instructions, value]);
     };
-    
-    const handleSubmitForm = (event) => {
-        event.preventDefault()
-        console.log(formTitle);
-        console.log(formDescription);
-        console.log(categories);
-        console.log(ingredients);
-        console.log(instructions);
+
+    const handleSubmitForm = async (event) => {
+        event.preventDefault();
+        const response = await api.postRecipe({
+            'title': formTitle,
+            'description': formDescription,
+            'categories': categories,
+            'ingredients': ingredients,
+            'instructions': instructions,
+            'userId': '1mK87M16ibVhzJeS30rMVdwpT6f1'
+        });
     };
 
     return (

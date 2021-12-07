@@ -8,8 +8,6 @@ import { SingleRecept } from './components/SingleRecept';
 import { PostRecipe } from './components/PostRecipe';
 import { MobileSideBar } from './components/MobileSideBar';
 
-
-
 function App() {
   const [recipe, setRecipe] = useState('')
   const [tabletSize , setTabletSize] = useState(false);
