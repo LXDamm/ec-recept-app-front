@@ -5,9 +5,8 @@ import { StartPage } from "./components/StartPage";
 import { UserLogin } from "./components/User/UserLogin";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SingleRecept } from './components/SingleRecept';
+import { PostRecipe } from './components/PostRecipe';
 import { MobileSideBar } from './components/MobileSideBar';
-
-
 
 function App() {
   const [recipe, setRecipe] = useState('')
@@ -70,6 +69,7 @@ function App() {
                   <Route exact path="/" element={<StartPage recept={recipe}/>} />
                   <Route path="/Member" element={<UserLogin/>} />
                   <Route path="/Singlerecept/:id" element={<SingleRecept/>} />
+                  <Route path="/Postrecept" element={<PostRecipe/>} />
                 </Routes>
               </div>
             </div>
