@@ -7,7 +7,8 @@ const auth = getAuth();
 
 export const loginAccount = async (email, pass) => {
     const user = await signInWithEmailAndPassword(auth, email, pass);
-    const token = await user.user.getIdToken();
+    const token = await user.user.getIdToken(true);
     console.log(token);
     const result = await api.loginAccount(user.user.uid, token);
+    return {token, ...result.data}
 };

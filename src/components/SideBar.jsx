@@ -18,13 +18,13 @@ export const SideBar = () =>{
             </div>
             <ul className="nav nav-pills flex-column mb-auto text-uppercase">
                 <li><Link to='/' className="link-light active"><h5>Home</h5></Link></li>
-                <li><Link to='/recept' className="link-light"><h5>Recept</h5></Link></li>
+                <li><Link to='/recipe' className="link-light"><h5>Recept</h5></Link></li>
                 <li><Link to='/contact' className="link-light"><h5>Contact us</h5></Link></li> 
             </ul>
             <hr />
             <div className="text-center">
                 
-                <Link to='/Member' className="link-light"><h5 className="text-wrap"><FontAwesomeIcon icon={faUserCircle} className="userIcon" size="lg"/>Login/Register</h5></Link>
+                <Link to='/login' className="link-light"><h5 className="text-wrap"><FontAwesomeIcon icon={faUserCircle} className="userIcon" size="lg"/>Login/Register</h5></Link>
                 <p className="copyright"><FontAwesomeIcon icon={faCopyright} /> Powered by Group 2</p>
             
             </div>

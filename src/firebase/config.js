@@ -1,4 +1,6 @@
-import { initializeApp } from 'firebase/app';
+import {
+    initializeApp
+} from 'firebase/app';
 
 const firebaseConfig = {
     apiKey: "AIzaSyAAKi27X1dYZZmKtnzqt7qgvhXio3hRuVE",
@@ -7,8 +9,8 @@ const firebaseConfig = {
     storageBucket: "recept-1a614.appspot.com",
     messagingSenderId: "712662391365",
     appId: "1:712662391365:web:25c40a0ed49aca71c4212c"
-  };
-  
-  const app = initializeApp(firebaseConfig);
-  
-  export default app;
+};
+
+const app = initializeApp(firebaseConfig);
+
+export default app;
