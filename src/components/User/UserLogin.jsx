@@ -1,5 +1,6 @@
 import './style.css';
 import React,{ useState } from "react";
+import { loginAccount } from '../../services/loginService';
 
 
 export const UserLogin = () =>{
@@ -11,6 +12,7 @@ export const UserLogin = () =>{
     const login =(e) =>{
         e.preventDefault();
         console.log(`Email: ${mail} and password: ${pass}`)
+        loginAccount(mail, pass);
     }
     const register =(e) =>{
         e.preventDefault();
