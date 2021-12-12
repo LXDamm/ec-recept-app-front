@@ -8,9 +8,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { SingleRecipe } from './components/SingleRecipe';
 import { PostRecipe } from './components/PostRecipe';
 import { MobileSideBar } from './components/MobileSideBar';
+import { getAllRecipes } from './services/recipeService';
 
 function App() {
   const [tabletSize , setTabletSize] = useState(false);
+  const [recipes, setRecipes] = useState([]);
   const handleResize = ()=>{
       if(window.innerWidth < 990){
           setTabletSize(true)
@@ -41,17 +43,22 @@ function App() {
     fetchData()
   },[])
 
+  useEffect(async () => {
+        const recipes = await getAllRecipes();
+        setRecipes(recipes);
+    }, []);
+
   return (
         <div className="container-fluid">
           <Router>
             <div className="row">
-              {tabletSize ? <MobileSideBar/> :<SideBar recipe={recipe}/>}
+              {tabletSize ? <MobileSideBar/> :<SideBar recipe={recipes}/>}
               <div className={"bg-light " + (tabletSize ? "col-11" : "col-10")}>
               <Routes>
 
-                  <Route exact path="/" element={<StartPage recept={recipe}/>} />
+                  <Route exact path="/" element={<StartPage recept={recipes}/>} />
                   <Route path="/Member" element={<UserLogin/>} />
-                  <Route path="/recipe/:id" element={<SingleRecept/>} />
+                  <Route path="/recipe/:id" element={<SingleRecipe/>} />
 
                   <Route exact path="/" element={<StartPage/>} />
                   <Route path="/login" element={<UserLogin/>} />
