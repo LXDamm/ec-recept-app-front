@@ -1,9 +1,8 @@
 import './style.css';
-import React,{ useEffect, useState } from "react";
-import { useNavigate } from 'react-router';
+import React, { useEffect, useState } from 'react';
 import account from '../../services/accountService';
 
-export const UserProfile = (props) =>{
+export const UserProfile = (props) => {
     const [username, setUsername] = useState(undefined);
     const [email, setEmail] = useState(undefined);
     const [pass, setPass] = useState(undefined);
@@ -13,13 +12,22 @@ export const UserProfile = (props) =>{
         setEmail(account.email);
         setPass(account.pass);
         account.store();
-    }, [account.loggedIn]);
+    }, []);
 
-    return(
+    return (
         <div>
-            <span><p>Username: </p><p>{username}</p></span>
-            <span><p>Email: </p><p>{email}</p></span>
-            <span><p>Password: </p><p>{pass}</p></span>
+            <span>
+                <p>Username: </p>
+                <p>{username}</p>
+            </span>
+            <span>
+                <p>Email: </p>
+                <p>{email}</p>
+            </span>
+            <span>
+                <p>Password: </p>
+                <p>{pass}</p>
+            </span>
         </div>
     );
-}
+};

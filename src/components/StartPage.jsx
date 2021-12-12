@@ -7,8 +7,8 @@ export const StartPage = () => {
     const [recipes, setRecipes] = useState([]);
 
     const ratingChanged = (newRating) => {
-        console.log(newRating)
-    }
+        console.log(newRating);
+    };
 
     useEffect(async () => {
         const recipes = await getAllRecipes();
@@ -22,32 +22,39 @@ export const StartPage = () => {
                 <p>...</p>
             </div>
             <div className="cardContainer">
-                {recipes.length > 0 ?
-                    recipes?.map(item => {
+                {recipes.length > 0 ? (
+                    recipes?.map((item) => {
                         return (
-                            <Link key={item.id} to={`/recipe/${item.id}`} >
+                            <Link key={item.id} to={`/recipe/${item.id}`}>
                                 <div className="card">
                                     <div className="topCard">
                                         <img src={item.image} alt="" />
                                     </div>
-                                    <div className="bottomCard" >
+                                    <div className="bottomCard">
                                         <div>
-                                            <p><strong>{item.title}</strong></p>
+                                            <p>
+                                                <strong>{item.title}</strong>
+                                            </p>
                                         </div>
                                         <div className="ratingCard">
                                             <p>By: {item.user}</p>
-                                            <ReactStars count={5} onChange={ratingChanged} size={16} activeColor='#ffd700' value={item.rating} />
+                                            <ReactStars
+                                                count={5}
+                                                onChange={ratingChanged}
+                                                size={16}
+                                                activeColor="#ffd700"
+                                                value={item.rating}
+                                            />
                                         </div>
-
                                     </div>
                                 </div>
                             </Link>
-                        )
+                        );
                     })
-                    :
+                ) : (
                     <p>No recipes</p>
-                }
+                )}
             </div>
         </div>
-    )
-}
+    );
+};
