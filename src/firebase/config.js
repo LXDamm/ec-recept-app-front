@@ -2,6 +2,10 @@ import {
     initializeApp
 } from 'firebase/app';
 
+/*
+    Firebase Web API
+*/
+
 const firebaseConfig = {
     apiKey: "AIzaSyAAKi27X1dYZZmKtnzqt7qgvhXio3hRuVE",
     authDomain: "recept-1a614.firebaseapp.com",

@@ -36,7 +36,7 @@ export const MobileSideBar = () => {
                         <Link to='/' className="link-light py-2">
                             <FontAwesomeIcon icon={faHome} className="userIcon" size="lg" />
                         </Link>
-                        <Link to='/' className="link-light py-2">
+                        <Link to='/recipe/post' className="link-light py-2">
                             <FontAwesomeIcon icon={faScroll} className="userIcon" size="lg" />
                         </Link>
                         <Link to='/' className="link-light py-2 ">

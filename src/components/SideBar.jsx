@@ -18,7 +18,7 @@ export const SideBar = () =>{
             </div>
             <ul className="nav nav-pills flex-column mb-auto text-uppercase">
                 <li><Link to='/' className="link-light active"><h5>Home</h5></Link></li>
-                <li><Link to='/recipe' className="link-light"><h5>Recept</h5></Link></li>
+                <li><Link to='/recipe/post' className="link-light"><h5>Recept</h5></Link></li>
                 <li><Link to='/contact' className="link-light"><h5>Contact us</h5></Link></li> 
             </ul>
             <hr />

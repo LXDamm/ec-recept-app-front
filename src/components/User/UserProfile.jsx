@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router';
 import account from '../../services/accountService';
 
 export const UserProfile = (props) =>{
-    const navigate = useNavigate();
     const [username, setUsername] = useState(undefined);
     const [email, setEmail] = useState(undefined);
     const [pass, setPass] = useState(undefined);

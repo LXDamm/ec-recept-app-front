@@ -2,6 +2,11 @@ import {
     loginAccount
 } from "./loginService";
 
+/**
+ * Account Class
+ * Used to keep state of loggedin user
+ */
+
 class Account {
     token;
     username;
