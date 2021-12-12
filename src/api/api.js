@@ -9,6 +9,15 @@ export const instance = axios.create({
     baseURL: 'http://localhost:3030'
 });
 
-const loginAccount = (uid, token) => instance.post('/account/login', { uid, token });
+const loginAccount = (id, token) => instance.post('/account/login', {
+    id,
+    token
+});
+const getAllRecipes = () => instance.get('/recipe');
+const getRecipe = (id) => instance.get(`/recipe/${id}`);
 
-export default { loginAccount };
+export default {
+    loginAccount,
+    getAllRecipes,
+    getRecipe
+};
