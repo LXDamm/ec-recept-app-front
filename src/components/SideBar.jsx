@@ -5,7 +5,7 @@ import { useState } from "react";
 import { SearchList } from "./SearchList";
 
 
-export const SideBar = ({recept}) =>{
+export const SideBar = ({recipe}) =>{
     const [searchShow, setSearchShow] = useState(false)
     const [searchField, setSearchField] = useState('')
     const [filtered, setFiltered] = useState([])
@@ -14,14 +14,14 @@ export const SideBar = ({recept}) =>{
     
     const handleChange = e =>{
         setSearchField(e.target.value)
-        const filtrec = recept.filter(item => { return (item.title.toLowerCase().includes(searchField.toLowerCase()))}) 
+        const filteredRecipe = recipe.filter(item => { return (item.title.toLowerCase().includes(searchField.toLowerCase()))}) 
         
         if(e.target.value === ''){
             setSearchShow(false)
             
         } else{
             setSearchShow(true)
-            setFiltered(filtrec)
+            setFiltered(filteredRecipe)
              
         } 
         
