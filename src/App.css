@@ -266,3 +266,21 @@ a:focus{
 a .card{
   color: black;
 }
+
+
+.searchBox{
+  box-shadow: 1px 2px 2px floralwhite;
+  padding: 2px 0px;
+}
+
+.searchBox a{
+  color: #e0dede;
+  text-decoration: none;
+ 
+}
+
+.searchBox li{
+  list-style-type: none;
+  padding: 2px 0px;
+}
+

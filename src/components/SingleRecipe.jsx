@@ -10,7 +10,7 @@ export const SingleRecipe = () => {
     useEffect(async () => {
         const recipe = await getRecipe(id);
         setRecipe(recipe);
-    }, [])
+    }, [id])
 
     return (
         <div className="SingleRecipe">
