@@ -58,13 +58,13 @@ function App() {
     fetchData()
   },[])
 
-  console.log(allUsers)
+  
 
   return (
         <div className="container-fluid">
           <Router>
             <div className="row">
-              {tabletSize ? <MobileSideBar/> :<SideBar />}
+              {tabletSize ? <MobileSideBar/> :<SideBar recept={recipe}/>}
               <div className={"bg-light " + (tabletSize ? "col-11" : "col-10")}>
               <Routes>
                   <Route exact path="/" element={<StartPage recept={recipe}/>} />

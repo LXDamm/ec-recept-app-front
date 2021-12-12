@@ -1,9 +1,35 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopyright, faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import {Link} from 'react-router-dom';
+import { useState } from "react";
+import { SearchList } from "./SearchList";
 
 
-export const SideBar = () =>{
+export const SideBar = ({recept}) =>{
+    const [searchShow, setSearchShow] = useState(false)
+    const [searchField, setSearchField] = useState('')
+    const [filtered, setFiltered] = useState([])
+
+    
+    
+    const handleChange = e =>{
+        setSearchField(e.target.value)
+        const filtrec = recept.filter(item => { return (item.title.toLowerCase().includes(searchField.toLowerCase()))}) 
+        
+        if(e.target.value === ''){
+            setSearchShow(false)
+            
+        } else{
+            setSearchShow(true)
+            setFiltered(filtrec)
+             
+        } 
+        
+    }
+
+    
+    
+
     return (
         
         <div className="col-lg-2 bg-dark ">
@@ -14,7 +40,11 @@ export const SideBar = () =>{
             </Link>
             
             <div className="my-5">
-            <input className="search-input" type="text" placeholder="search" />
+            <input className="search-input" type="text" placeholder="search" onChange={handleChange} />
+            {searchShow? filtered?.map(item =>{
+                return <SearchList filteredItems={item.title} id={item.id}/>
+            }) : null}
+
             </div>
             <ul className="nav nav-pills flex-column mb-auto text-uppercase">
                 <li><Link to='/' className="link-light active"><h5>Home</h5></Link></li>

@@ -22,7 +22,7 @@ export const SingleRecept = () =>{
       }
     }
     fetchData()
-    }, [])
+    }, [id])
 
     
 
