@@ -8,7 +8,7 @@ export const SearchList = ({filteredItems, id}) =>{
     return (
         <>
             <div className="searchBox">
-            <Link to={`/Singlerecept/${id}`}><li>{filteredItems}</li></Link>
+            <Link to={`/recipe/${id}`}><li>{filteredItems}</li></Link>
             </div>
             
        
