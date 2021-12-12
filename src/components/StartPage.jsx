@@ -1,45 +1,53 @@
+import { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
-/* import {useEffect, useState} from 'react'; */
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { getAllRecipes } from '../services/recipeService';
 
-export const StartPage = ({recept}) =>{
+export const StartPage = () => {
+    const [recipes, setRecipes] = useState([]);
 
-  
-
-    const ratingChanged = (newRating) =>{
+    const ratingChanged = (newRating) => {
         console.log(newRating)
     }
 
-     return(
-         <div className="container">
-             <div className="header">
-                 <h1>Welcome to Mat Recept</h1>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A magni eum eaque natus, qui sunt vel rerum excepturi culpa veritatis laboriosam error optio corrupti accusantium quo magnam suscipit eius dolor.</p>
-             </div>
-             <div className="cardContainer">
-                 {recept !== '' ? recept.map(item =>{
-                     return (
-                        <Link to={`/Singlerecept/${item.id}`} > 
-                            <div className="card">
-                                <div className="topCard">
-                                <img src={item.image} alt="" />
-                                </div>
-                                <div className="bottomCard" >
-                                    <div>
-                                    <p><strong>{item.title}</strong></p>
-                                    </div>
-                                    <div className="ratingCard">
-                                    <p>By: {item.user}</p>
-                                    <ReactStars count={5} onChange={ratingChanged} size={16} activeColor='#ffd700' value={item.rating}/>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </Link>
-                     )
-                 }): null}
-                
+    useEffect(async () => {
+        const recipes = await getAllRecipes();
+        setRecipes(recipes);
+    }, []);
+
+    return (
+        <div className="container">
+            <div className="header">
+                <h1>Welcome to Mat Recept</h1>
+                <p>...</p>
             </div>
-         </div>
-     )
+            <div className="cardContainer">
+                {recipes.length > 0 ?
+                    recipes?.map(item => {
+                        return (
+                            <Link key={item.id} to={`/recipe/${item.id}`} >
+                                <div className="card">
+                                    <div className="topCard">
+                                        <img src={item.image} alt="" />
+                                    </div>
+                                    <div className="bottomCard" >
+                                        <div>
+                                            <p><strong>{item.title}</strong></p>
+                                        </div>
+                                        <div className="ratingCard">
+                                            <p>By: {item.user}</p>
+                                            <ReactStars count={5} onChange={ratingChanged} size={16} activeColor='#ffd700' value={item.rating} />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </Link>
+                        )
+                    })
+                    :
+                    <p>No recipes</p>
+                }
+            </div>
+        </div>
+    )
 }
