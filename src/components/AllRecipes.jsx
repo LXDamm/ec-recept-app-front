@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { getAllRecipes } from '../services/recipeService';
 
 export const AllRecipes = () =>{
-
     const [recipes, setRecipes] = useState([]);
 
     const ratingChanged = (newRating) => {
@@ -12,11 +11,13 @@ export const AllRecipes = () =>{
     };
 
     useEffect(() => {
+        let controller = new AbortController();
         (async () => {
             const recipes = await getAllRecipes();
             console.log(recipes);
             setRecipes(recipes);
         })();
+        return () => controller?.abort();
     }, []);
 
     return (

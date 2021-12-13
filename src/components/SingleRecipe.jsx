@@ -18,7 +18,6 @@ export const SingleRecipe = () => {
 
     return (
         <div className="SingleRecipe">
-            <div><p>{recipeId}</p></div>
             <div className="row bg-secondary p-2">
                 <div className="col p-1"><img className="rounded shadow-sm" src="image 2.jpg" alt="" /></div>
                 <div className="col p-1"><img className="rounded shadow-sm" src="image-3.jpg" alt="" /></div>

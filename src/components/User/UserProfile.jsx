@@ -11,9 +11,10 @@ export const UserProfile = (props) => {
 	const [username, setUsername] = useState(undefined);
 	const [email, setEmail] = useState(undefined);
 	const [pass, setPass] = useState(undefined);
-	const [recipes, setRecipes] = useState(undefined);
+	const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
+        let controller = new AbortController();
         (async () => {
             setUsername(account.username);
             setEmail(account.email);
@@ -21,8 +22,10 @@ export const UserProfile = (props) => {
             account.store();
     
             const result = await getRecipesByUser(account.userId);
-			if (result) setRecipes(result);
+			if (Array.isArray(result)) setRecipes(result);
+			else setRecipes([]);
         })();
+        return () => controller?.abort();
     }, []);
 
 	const handleLogout = (e) => {
@@ -66,8 +69,7 @@ export const UserProfile = (props) => {
 			<div className="row bg-white m-4 rounded-3 p-3 shadow justify-content-center">
 				<h3>Your Recipe</h3>
 				<div className="cardContainer">
-                    {recipes ? (
-						recipes?.map((item) => {
+					{Array.isArray(recipes) ? (recipes?.map((item) => {
 							return (
 								<Link key={item.userId} to={`/recipe/${item.userId}`}>
 						    	<div className="card">
@@ -77,7 +79,7 @@ export const UserProfile = (props) => {
 							    </Link>
 							);
 						})
-					) : (<p>Please log in</p>)
+					) : (<img src="loading.svg" alt="Loading" />)
 					}
 				</div>
 			</div>

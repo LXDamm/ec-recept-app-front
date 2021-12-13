@@ -7,8 +7,6 @@ export const SearchList = ({filteredItems, id}) =>{
             <div className="searchBox">
             <Link to={`/recipe/${id}`}><li>{filteredItems}</li></Link>
             </div>
-            
-       
         </>
     )
 }

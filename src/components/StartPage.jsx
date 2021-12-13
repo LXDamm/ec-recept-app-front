@@ -11,11 +11,13 @@ export const StartPage = () => {
     };
 
     useEffect(() => {
+        let controller = new AbortController();
         (async () => {
             const recipes = await getAllRecipes();
             recipes.splice(6)
             setRecipes(recipes);
         })();
+        return () => controller?.abort();
     }, []);
 
     return (

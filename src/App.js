@@ -28,10 +28,12 @@ function App() {
     }, []);
 
     useEffect(() => {
+        let controller = new AbortController();
         (async () => {
             const recipes = await getAllRecipes();
             setRecipes(recipes);
         })();
+        return () => controller?.abort();
     }, []);
 
     return (
