@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import account from "../../services/accountService";
 
 export const AddRecipe = () =>{
     const [formTitle, setFormTitle] = useState(undefined);
@@ -34,14 +34,17 @@ export const AddRecipe = () =>{
             e.target.value="";
         }
     };
-    const handleSubmitForm = () => {
+    const handleSubmitForm = (e) => {
+        e.preventDefault();
+        account.login(account.email, 'password');
+        console.log(account.token);
         axios.post(`http://127.0.0.1:3030/recipe`,{
+            token: account.token,
             title: formTitle,
             description: formDescription,
             categories: formCategory,
             ingredients: ingredients,
-            instruction: instructions,
-            userId: '1mK87M16ibVhzJeS30rMVdwpT6f1',
+            instructions: instructions,
         })
     };
     return(
