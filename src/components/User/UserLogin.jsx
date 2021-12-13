@@ -22,7 +22,7 @@ export const UserLogin = () =>{
                 <input className="member-input" type="checkbox" id="chk" aria-hidden="true"/>
                 <div className="signup">
                     <form onSubmit={register}>
-                        <label htmlFor="chk" aria-hidden="true">Sign up</label>
+                        <label htmlFor="chk" aria-hidden="true" className="title-login">Sign up</label>
                         <input className="member-input" type="text" name="text" placeholder="Username" onChange={(e)=>setUserName(e.target.value)} required/>
                         <input className="member-input" type="email" name="email" placeholder="Email" onChange={(e)=>setMail(e.target.value)} required/>
                         <input className="member-input" type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)}/>
@@ -31,7 +31,7 @@ export const UserLogin = () =>{
                 </div>
                 <div className="login">
                     <form onSubmit={login}>
-                        <label htmlFor="chk" aria-hidden="true"> Login </label>
+                        <label htmlFor="chk" aria-hidden="true" className="title-login"> Login </label>
                         <input className="member-input" type="email" name="email" placeholder="Email" required onChange={(e)=>setMail(e.target.value)}/>
                         <input className="member-input" type="password" name="pswd" placeholder="password" onChange={(e)=>setPass(e.target.value)} required/>
                         <button className="member-btn">Sign in</button>

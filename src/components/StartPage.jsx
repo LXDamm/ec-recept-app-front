@@ -11,7 +11,7 @@ export const StartPage = ({recept}) =>{
     }
 
      return(
-         <div className="container">
+         <div className="container mt-4">
              <div className="header">
                  <h1>Welcome to Mat Recept</h1>
                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A magni eum eaque natus, qui sunt vel rerum excepturi culpa veritatis laboriosam error optio corrupti accusantium quo magnam suscipit eius dolor.</p>
