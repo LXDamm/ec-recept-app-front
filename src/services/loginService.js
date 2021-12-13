@@ -16,12 +16,12 @@ export const loginAccount = async (email, pass) => {
     const token = await user.user.getIdToken(true);
     console.log(`Login token: \n${token}`);
     const result = await api.loginAccount(user.user.uid, token);
-    return {token, ...result.data}
+    return {token, userId: user.user.uid, ...result.data}
 };
 
 export const registerAccount = async (username, email, pass) => {
     const user = await createUserWithEmailAndPassword(auth, email, pass);
     const token = await user.user.getIdToken(true);
     const result = await api.registerAccount(username, email, user.user.uid);
-    return {token, ...result.data};
+    return {token, userId: user.user.uid, ...result.data};
 };

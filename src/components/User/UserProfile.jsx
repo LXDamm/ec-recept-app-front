@@ -2,11 +2,12 @@ import './style.css';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import account from '../../account/account';
 
 export const UserProfile = (props) => {
+    const navigate = useNavigate();
     const [username, setUsername] = useState(undefined);
     const [email, setEmail] = useState(undefined);
     const [pass, setPass] = useState(undefined);
@@ -25,6 +26,7 @@ export const UserProfile = (props) => {
     const handleLogout = (e) => {
         e.preventDefault();
         account.logout();
+        navigate('/');
     }
 
     return (
