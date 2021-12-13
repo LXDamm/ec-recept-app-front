@@ -24,7 +24,7 @@
 	width:100%;
     height: 100%;
 }
-label{
+.title-login{
     color: #fff;
 	font-size: 2.3em;
 	justify-content: center;
@@ -88,3 +88,10 @@ label{
 	transform: scale(.6);
 }
 
+
+.text-box{
+	height: 100px !important;
+}
+.profile-picture{
+	font-size: 150px;
+}

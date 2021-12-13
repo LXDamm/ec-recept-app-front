@@ -3,6 +3,9 @@ import { faCopyright, faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { SearchList } from './SearchList';
+import React from 'react';
+
+
 
 export const SideBar = ({ recipes }) => {
     const [searchShow, setSearchShow] = useState(false);
@@ -25,7 +28,7 @@ export const SideBar = ({ recipes }) => {
 
     return (
         <div className="col-lg-2 bg-dark ">
-            <div className="d-flex flex-column h-100 flex-shrink-0 p-3 text-white sticky-top">
+            <div className="d-flex justify-content-around flex-column p-3 text-white sticky-top">
                 <Link to="/" className="my-3 text-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                     <img src="logo.png" className="text-center w-100" alt="" />
                 </Link>
@@ -60,8 +63,9 @@ export const SideBar = ({ recipes }) => {
                         </Link>
                     </li>
                 </ul>
-                <hr />
+                
                 <div className="text-center">
+                    <hr className="mt-5"/>
                     <Link to="/login" className="link-light">
                         <h5 className="text-wrap">
                             <FontAwesomeIcon  icon={faUserCircle} className="userIcon" size="lg" />

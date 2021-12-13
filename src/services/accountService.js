@@ -12,6 +12,7 @@ class Account {
     username;
     email;
     loggedIn;
+    
     constructor() {
         this.token = undefined;
         this.username = undefined;
