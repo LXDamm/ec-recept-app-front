@@ -1,21 +1,24 @@
 import { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { getRecipe } from '../services/recipeService';
 
 export const SingleRecipe = () => {
-    const [recipe, setRecipe] = useState(undefined)
-    const { id } = useParams()
+    const [recipe, setRecipe] = useState(undefined);
+    const { recipeId } = useParams();
 
     useEffect(() => {
+        let controller = new AbortController();
         (async () => {
-            const recipe = await getRecipe(id);
-            setRecipe(recipe);
+            const recipe = await getRecipe(recipeId);
+            if (recipe) setRecipe(recipe);
         })();
-    }, [id])
+        return () => controller?.abort();
+    }, [recipeId])
 
     return (
         <div className="SingleRecipe">
+            <div><p>{recipeId}</p></div>
             <div className="row bg-secondary p-2">
                 <div className="col p-1"><img className="rounded shadow-sm" src="image 2.jpg" alt="" /></div>
                 <div className="col p-1"><img className="rounded shadow-sm" src="image-3.jpg" alt="" /></div>
@@ -27,7 +30,6 @@ export const SingleRecipe = () => {
             </div>
             {recipe ? (
                 <div className="single-recept-container">
-
                     <div className="recept-box">
                         <div className="left-box">
                             <div className="recept-title">

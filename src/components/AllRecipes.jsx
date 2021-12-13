@@ -14,6 +14,7 @@ export const AllRecipes = () =>{
     useEffect(() => {
         (async () => {
             const recipes = await getAllRecipes();
+            console.log(recipes);
             setRecipes(recipes);
         })();
     }, []);

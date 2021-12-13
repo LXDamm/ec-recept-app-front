@@ -66,7 +66,7 @@ export const UserProfile = (props) => {
 			<div className="row bg-white m-4 rounded-3 p-3 shadow justify-content-center">
 				<h3>Your Recipe</h3>
 				<div className="cardContainer">
-                    {recipes && recipes.length > 0 ? (
+                    {recipes ? (
 						recipes?.map((item) => {
 							return (
 								<Link key={item.userId} to={`/recipe/${item.userId}`}>

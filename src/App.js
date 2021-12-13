@@ -6,7 +6,7 @@ import { UserLogin } from './components/User/UserLogin';
 import { UserProfile } from './components/User/UserProfile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SingleRecipe } from './components/SingleRecipe';
-import {AllRecipes} from './components/AllRecipes';
+import { AllRecipes } from './components/AllRecipes';
 import { AddRecipe } from './components/User/AddRecipe';
 import { MobileSideBar } from './components/MobileSideBar';
 import { getAllRecipes } from './services/recipeService';
@@ -48,7 +48,7 @@ function App() {
                             <Route exact path="/" element={<StartPage/>} />
                             <Route path="/login" element={<UserLogin/>} />
                             <Route path="/profile" element={<UserProfile/>} />
-                            <Route path="/recipe/:id" element={<SingleRecipe/>} />
+                            <Route path="/recipe/:recipeId" element={<SingleRecipe/>} />
                             <Route path="/addrecipe" element={<AddRecipe/>} />
                             <Route path="/allrecipes" element={<AllRecipes/>} />
                         </Routes>
