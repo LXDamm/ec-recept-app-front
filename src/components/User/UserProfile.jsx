@@ -18,11 +18,15 @@ export const UserProfile = (props) => {
         setPass(account.pass);
         account.store();
 
-
-
         axios.get(`http://localhost:3030/recipe/user/YORqSq8iUFTSgijYBkZaw8Axn8I3`)
         .then(res =>{ setRecipes(res.data)})
     }, []);
+
+    const handleLogout = (e) => {
+        e.preventDefault();
+        account.logout();
+    }
+
     return (
         <div>
             <div className="row bg-white m-4 rounded-3 p-3 shadow modal-dialog-centered">
@@ -43,7 +47,7 @@ export const UserProfile = (props) => {
                 </div>
                 <div className="col-lg-2 d-flex flex-column">
                     <Link to="/addrecipe" class="btn btn-outline-success my-2">Add Recipe</Link>
-                    <Link to="/" class="btn btn-outline-danger" onClick={account.logout}>Loggut</Link>
+                    <Link to="/" class="btn btn-outline-danger" onClick={event => handleLogout(event)}>Loggut</Link>
 
                 </div>
             </div>
@@ -76,9 +80,7 @@ export const UserProfile = (props) => {
                         <p>No recipes</p>
                         )
                     }
-                </div>  
-                
-                
+                </div>
             </div>
         </div>
     );
