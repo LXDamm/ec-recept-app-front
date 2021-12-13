@@ -32,17 +32,16 @@ export const SingleRecipe = () => {
                                 <h2>{recipe.title}</h2>
                             </div>
                             <div className="recept-description">
-                                <p>{recipe.description}</p>
-                                {/* <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                            <br />
-                            <br/>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                            <br/>
-                            <br/>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                            </p> */}
+                                <p>{recipe.description}</p>  
+                            </div>
+                            <div>
+                                <h5>Gör så här:</h5>
+                                <ul>
+                                {recipe.instruction?.map(item =>{
+                                    return <li>{item}</li>
+                                })}
+                                
+                                </ul>
                             </div>
                         </div>
                         <div className="right-box">
@@ -60,60 +59,12 @@ export const SingleRecipe = () => {
                                         return <li>{item}</li>
                                     })}
 
-                                    {/* <li>1 pound breakfast sausage</li>
-                                <li>¾ cup chopped onion</li>
-                                <li>1 ½ cups finely diced celery</li>
-                                <li>¾ cup margarine, melted</li>
-                                <li>8 cups white bread cubes</li>
-                                <li>3 teaspoons poultry seasoning</li>
-                                <li>¼ teaspoon ground black pepper</li> */}
                                 </ul>
 
                             </div>
                         </div>
                     </div>
-                    <div className="comment-box">
-                        <div className="comment-title">
-                            <h4>Comments</h4>
-                        </div>
-                        <div className="comment-form">
-                            <form>
-                                <div className="name-email-box">
-                                    <input className="name-input form-control" type="text" placeholder="Your Name" />
-                                    <input className="email-input form-control" type="text" placeholder="Your Email" />
-                                </div>
-                                <textarea class="comment-textarea form-control" type="textbox" placeholder="comment" />
-                                <div className="send-btn-box"><button className="member-btn send-btn">Send</button></div>
-
-                            </form>
-                        </div>
-                        <div className="comments-show">
-                            <h4>Comments</h4>
-                            <ul className="comment-user-box">
-                                <li>
-                                    <h6 className="p-2">User 1</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                                    </p>
-                                </li>
-                                <li>
-                                    <h6 className="p-2">User 1</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                                    </p>
-                                </li>
-                                <li>
-                                    <h6 className="p-2">User 11</h6>
-                                    <p>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Odio facilisis elementum etiam risus massa etiam ut. Urna mauris dignissim nam suspendisse consequat. Cursus justo, blandit convallis morbi lectus. Non nullam penatibus dignissim tortor.
-                                    </p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    
                 </div>
                 :
                 <img src="loading.svg"></img>
