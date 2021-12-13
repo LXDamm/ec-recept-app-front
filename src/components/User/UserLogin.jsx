@@ -1,7 +1,7 @@
 import './style.css';
 import React,{ useState } from "react";
 import { useNavigate } from 'react-router';
-import account from '../../services/accountService';
+import account from '../../account/account';
 
 export const UserLogin = (props) =>{
     const navigate = useNavigate();
@@ -17,7 +17,9 @@ export const UserLogin = (props) =>{
     }
     const register =(e) =>{
         e.preventDefault();
-        console.log(`UserName: ${userName}, Email: ${mail} and password: ${pass}`)
+        if (userName && mail && pass) {
+            const result = account.register(userName, mail, pass);
+        }
     }
     return(
         <div className="user-container">

@@ -13,11 +13,17 @@ const loginAccount = (id, token) => instance.post('/account/login', {
     id,
     token
 });
+const registerAccount = (username, email, userId) => instance.post('/account/create', {
+    username,
+    email,
+    userId
+})
 const getAllRecipes = () => instance.get('/recipe');
 const getRecipe = (id) => instance.get(`/recipe/${id}`);
 
 export default {
     loginAccount,
+    registerAccount,
     getAllRecipes,
     getRecipe
 };
