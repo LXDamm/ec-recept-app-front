@@ -8,11 +8,10 @@ export const SingleRecipe = () => {
     const { id } = useParams()
 
     useEffect(() => {
-        const fetch = async () => {
+        (async () => {
             const recipe = await getRecipe(id);
             setRecipe(recipe);
-        }
-        fetch();
+        })();
     }, [id])
 
     return (

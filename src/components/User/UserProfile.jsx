@@ -14,22 +14,21 @@ export const UserProfile = (props) => {
 	const [recipes, setRecipes] = useState(undefined);
 
     useEffect(() => {
-        const fetch = async () => {
+        (async () => {
             setUsername(account.username);
             setEmail(account.email);
             setPass(account.pass);
             account.store();
     
             const result = await getRecipesByUser(account.userId);
-            if (result) setRecipes(result);
-        };
-        fetch();
-    }, [])
+			if (result) setRecipes(result);
+        })();
+    }, []);
 
 	const handleLogout = (e) => {
 		e.preventDefault();
 		account.logout();
-		navigate('/');
+		navigate('/', {replace: true});
 	};
 
 	return (
@@ -59,7 +58,7 @@ export const UserProfile = (props) => {
 					<Link to="/addrecipe" class="btn btn-outline-success my-2">
 						Add Recipe
 					</Link>
-					<Link class="btn btn-outline-danger" onClick={(event) => handleLogout(event)}>
+					<Link to="/profile" class="btn btn-outline-danger" onClick={(event) => handleLogout(event)}>
 						Logout
 					</Link>
 				</div>
@@ -67,14 +66,19 @@ export const UserProfile = (props) => {
 			<div className="row bg-white m-4 rounded-3 p-3 shadow justify-content-center">
 				<h3>Your Recipe</h3>
 				<div className="cardContainer">
-                    {recipes && recipes.map((item) => (
-                        <Link key={item.id} to={`/recipe/${item.id}`}>
-						    <div className="card">
+                    {recipes && recipes.length > 0 ? (
+						recipes?.map((item) => {
+							return (
+								<Link key={item.userId} to={`/recipe/${item.userId}`}>
+						    	<div className="card">
                                 <div className="topCard"><img src={item.image} alt="" /></div>
 							    <div className="bottomCard"><p><strong>{item.title}</strong></p></div>
-						    </div>
-					    </Link>
-                    ))}
+						    	</div>
+							    </Link>
+							);
+						})
+					) : (<p>Please log in</p>)
+					}
 				</div>
 			</div>
 		</div>

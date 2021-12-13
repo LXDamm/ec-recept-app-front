@@ -71,10 +71,7 @@ export const MobileSideBar = ({recipes}) => {
             </div>
             <div className="col-1 bg-dark menu-expand ">
                 <div className="d-flex flex-column flex-shrink-0 bg-dark sticky-top">
-                    <Link
-                        to="/"
-                        className=" align-items-center mb-3 mt-3 mb-md-4 me-md-auto text-white text-decoration-none"
-                    >
+                    <Link to="/" className=" align-items-center mb-3 mt-3 mb-md-4 me-md-auto text-white text-decoration-none">
                         <img src="logo.png" className="w-100" alt="" />
                     </Link>
 

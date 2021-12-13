@@ -11,12 +11,11 @@ export const StartPage = () => {
     };
 
     useEffect(() => {
-        const fetch = async () => {
+        (async () => {
             const recipes = await getAllRecipes();
             recipes.splice(6)
             setRecipes(recipes);
-        };
-        fetch();
+        })();
     }, []);
 
     return (

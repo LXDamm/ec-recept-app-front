@@ -12,7 +12,7 @@ export const getRecipe = async (id) => {
     else return false;
 }
 
-export const getRecipesByUser = async(id) => {
+export const getRecipesByUser = async (id) => {
     const data = await api.get(`/recipe/user/${id}`);
     if (data.status === 200) return data.data;
     else return false;

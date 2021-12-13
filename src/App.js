@@ -14,6 +14,7 @@ import { getAllRecipes } from './services/recipeService';
 function App() {
     const [recipes, setRecipes] = useState(undefined);
     const [tabletSize, setTabletSize] = useState(false);
+
     const handleResize = () => {
         if (window.innerWidth < 990) {
             setTabletSize(true);
@@ -27,11 +28,10 @@ function App() {
     }, []);
 
     useEffect(() => {
-        const fetch = async () => {
+        (async () => {
             const recipes = await getAllRecipes();
             setRecipes(recipes);
-        };
-        fetch();
+        })();
     }, []);
 
     return (
@@ -45,17 +45,11 @@ function App() {
                     )}
                     <div className={'bg-light ' + (tabletSize ? 'col-11' : 'col-10')}>
                         <Routes>
-                            <Route exact path="/" element={<StartPage />} />
-                            <Route path="/login" element={<UserLogin />} />
-                            <Route path="/profile" element={<UserProfile />} />
-                            <Route
-                                path="/recipe/:id"
-                                element={<SingleRecipe />}
-                            />
-                                    <Route
-                                path="/addrecipe"
-                                element={<AddRecipe />}
-                            />
+                            <Route exact path="/" element={<StartPage/>} />
+                            <Route path="/login" element={<UserLogin/>} />
+                            <Route path="/profile" element={<UserProfile/>} />
+                            <Route path="/recipe/:id" element={<SingleRecipe/>} />
+                            <Route path="/addrecipe" element={<AddRecipe/>} />
                             <Route path="/allrecipes" element={<AllRecipes/>} />
                         </Routes>
                     </div>

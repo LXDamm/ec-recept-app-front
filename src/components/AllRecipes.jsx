@@ -12,11 +12,10 @@ export const AllRecipes = () =>{
     };
 
     useEffect(() => {
-        const fetch = async () => {
+        (async () => {
             const recipes = await getAllRecipes();
             setRecipes(recipes);
-        }
-        fetch();
+        })();
     }, []);
 
     return (
