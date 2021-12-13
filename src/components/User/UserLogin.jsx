@@ -1,8 +1,10 @@
 import './style.css';
 import React,{ useState } from "react";
+import { useNavigate } from 'react-router';
+import account from '../../services/accountService';
 
-
-export const UserLogin = () =>{
+export const UserLogin = (props) =>{
+    const navigate = useNavigate();
     const [userName, setUserName] = useState();
     const [mail,setMail] = useState();
     const [pass,setPass] = useState();
@@ -10,7 +12,8 @@ export const UserLogin = () =>{
 
     const login =(e) =>{
         e.preventDefault();
-        console.log(`Email: ${mail} and password: ${pass}`)
+        const result = account.login(mail, pass);
+        if (result) navigate('/profile');
     }
     const register =(e) =>{
         e.preventDefault();

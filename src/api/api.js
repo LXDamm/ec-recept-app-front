@@ -1,19 +1,23 @@
-const BASE_URL = 'http://127.0.0.1:3030';
+import axios from 'axios';
 
-const postRecipe = async (data) => {
-    let response = undefined;
-    try {
-        response = await fetch(BASE_URL + '/recipe', {
-            method: 'POST',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-    } finally {
-        return response;
-    }
-}
+/**
+ * Axios API
+ * Use to send requests to backend
+ */
 
-export default { postRecipe };
+export const instance = axios.create({
+    baseURL: 'http://localhost:3030'
+});
+
+const loginAccount = (id, token) => instance.post('/account/login', {
+    id,
+    token
+});
+const getAllRecipes = () => instance.get('/recipe');
+const getRecipe = (id) => instance.get(`/recipe/${id}`);
+
+export default {
+    loginAccount,
+    getAllRecipes,
+    getRecipe
+};
