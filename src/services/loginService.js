@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import firebase from '../firebase/config';
 import api from '../api/api';
 
@@ -14,7 +14,14 @@ const auth = getAuth();
 export const loginAccount = async (email, pass) => {
     const user = await signInWithEmailAndPassword(auth, email, pass);
     const token = await user.user.getIdToken(true);
-    console.log(token);
+    console.log(`Login token: \n${token}`);
     const result = await api.loginAccount(user.user.uid, token);
     return {token, ...result.data}
+};
+
+export const registerAccount = async (username, email, pass) => {
+    const user = await createUserWithEmailAndPassword(auth, email, pass);
+    const token = await user.user.getIdToken(true);
+    const result = await api.registerAccount(username, email, user.user.uid);
+    return {token, ...result.data};
 };

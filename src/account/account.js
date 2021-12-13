@@ -1,6 +1,6 @@
 import {
-    loginAccount
-} from "./loginService";
+    loginAccount, registerAccount
+} from "../services/loginService";
 
 /**
  * Account Class
@@ -29,6 +29,17 @@ class Account {
             return true;
         }
     };
+    async register(username, email, pass) {
+        this.email = email;
+        const result = await registerAccount(username, email, pass);
+        if (result) {
+            this.token = result.token;
+            this.loggedIn = true;
+            this.username = result.username;
+            this.store();
+            return true;
+        }
+    }
     logout() {
         this.token = undefined;
         this.loggedIn = false;
