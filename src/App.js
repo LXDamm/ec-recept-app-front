@@ -7,6 +7,8 @@ import { UserProfile } from './components/User/UserProfile';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { SingleRecipe } from './components/SingleRecipe';
 import { PostRecipe } from './components/PostRecipe';
+import { AddRecipe } from './components/User/AddRecipe'
+import { AddRecipe } from './components/User/AddRecipe'
 import { MobileSideBar } from './components/MobileSideBar';
 import { getAllRecipes, getRecipe } from './services/recipeService';
 
@@ -52,6 +54,10 @@ function App() {
                             <Route
                                 path="/recipe/post"
                                 element={<PostRecipe />}
+                            />
+                                    <Route
+                                path="/addrecipe"
+                                element={<AddRecipe />}
                             />
                         </Routes>
                     </div>
