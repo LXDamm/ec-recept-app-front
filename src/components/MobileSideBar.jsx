@@ -10,8 +10,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import account from '../services/accountService';
 import { SearchList } from './SearchList';
+import account from '../account/account';
 
 export const MobileSideBar = ({recipes}) => {
     const [showSearchBox, setShowSearchBox] = useState(false);

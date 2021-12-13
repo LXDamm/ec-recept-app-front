@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import account from "../../services/accountService";
+import account from "../../account/account";
 
 export const AddRecipe = () =>{
     const [formTitle, setFormTitle] = useState(undefined);
