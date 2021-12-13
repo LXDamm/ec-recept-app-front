@@ -10,15 +10,16 @@ export const UserLogin = (props) =>{
     const [pass,setPass] = useState();
     
 
-    const login =(e) =>{
+    const login = async (e) =>{
         e.preventDefault();
-        const result = account.login(mail, pass);
+        const result = await account.login(mail, pass);
         if (result) navigate('/profile');
     }
-    const register =(e) =>{
+    const register = async (e) =>{
         e.preventDefault();
         if (userName && mail && pass) {
-            const result = account.register(userName, mail, pass);
+            const result = await account.register(userName, mail, pass);
+            if (result) navigate('/profile');
         }
     }
     return(

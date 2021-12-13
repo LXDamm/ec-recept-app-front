@@ -35,7 +35,7 @@ class Account {
         if (result) {
             this.token = result.token;
             this.loggedIn = true;
-            this.username = result.username;
+            this.username = username;
             this.store();
             return true;
         }
