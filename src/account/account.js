@@ -12,11 +12,12 @@ class Account {
     username;
     email;
     loggedIn;
-    
+    userId;
     constructor() {
         this.token = undefined;
         this.username = undefined;
         this.email = undefined;
+        this.userId = undefined;
         this.loggedIn = false;
     };
     async login(email, pass) {
@@ -44,6 +45,7 @@ class Account {
     logout() {
         this.token = undefined;
         this.loggedIn = false;
+        localStorage.removeItem('account');
         return true;
     };
     store() {
