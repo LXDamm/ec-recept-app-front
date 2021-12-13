@@ -1,17 +1,21 @@
 import api from "../api/api";
 
 export const getAllRecipes = async () => {
-    const data = await api.getAllRecipes();
-    return data.data;
+    const data = await api.get('/recipe');
+    if (data.status === 200) return data.data;
+    else return false;
 };
 
 export const getRecipe = async (id) => {
-    const data = await api.getRecipe(id);
-    return data.data;
+    console.log(id);
+    const data = await api.get(`/recipe/${id}`);
+    console.log(data);
+    if (data.status === 200) return data.data;
+    else return false;
 }
 
-
-/* export const getRecipeByUser = async(id){
-    const data = await api.getRecipeByUser(id);
-    return data.data;
-} */
+export const getRecipesByUser = async (id) => {
+    const data = await api.get(`/recipe/user/${id}`);
+    if (data.status === 200) return data.data;
+    else return false;
+}

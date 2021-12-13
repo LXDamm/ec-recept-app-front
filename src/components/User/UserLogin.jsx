@@ -1,27 +1,31 @@
 import './style.css';
 import React,{ useState } from "react";
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import account from '../../account/account';
 
-export const UserLogin = (props) =>{
+export const UserLogin = (props) => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState();
     const [mail,setMail] = useState();
     const [pass,setPass] = useState();
-    
 
-    const login = async (e) =>{
+    const login = async (e) => {
         e.preventDefault();
         const result = await account.login(mail, pass);
-        if (result) navigate('/profile');
+        if (result) {
+            navigate('/profile');
+        }
     }
-    const register = async (e) =>{
+    const register = async (e) => {
         e.preventDefault();
         if (userName && mail && pass) {
             const result = await account.register(userName, mail, pass);
-            if (result) navigate('/profile');
+            if (result) {
+                navigate('/profile');
+            }
         }
     }
+
     return(
         <div className="user-container">
             <div className="user-main">

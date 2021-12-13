@@ -27,6 +27,7 @@ class Account {
             this.token = result.token;
             this.loggedIn = true;
             this.username = result.username;
+            this.userId = result.userId;
             this.store();
             return true;
         }
@@ -38,6 +39,7 @@ class Account {
             this.token = result.token;
             this.loggedIn = true;
             this.username = username;
+            this.userId = result.userId;
             this.store();
             return true;
         }
@@ -45,6 +47,7 @@ class Account {
     logout() {
         this.token = undefined;
         this.loggedIn = false;
+        this.userId = undefined;
         localStorage.removeItem('account');
         return true;
     };

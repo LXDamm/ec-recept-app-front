@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import ReactStars from 'react-rating-stars-component';
-import { useParams } from 'react-router';
+import { useParams } from 'react-router-dom';
 import { getRecipe } from '../services/recipeService';
 
 export const SingleRecipe = () => {
-    const [recipe, setRecipe] = useState(undefined)
-    const { id } = useParams()
+    const [recipe, setRecipe] = useState(undefined);
+    const { recipeId } = useParams();
 
-    useEffect(async () => {
-        const recipe = await getRecipe(id);
-        setRecipe(recipe);
-    }, [id])
+    useEffect(() => {
+        let controller = new AbortController();
+        (async () => {
+            const recipe = await getRecipe(recipeId);
+            if (recipe) setRecipe(recipe);
+        })();
+        return () => controller?.abort();
+    }, [recipeId])
 
     return (
         <div className="SingleRecipe">
@@ -23,9 +27,8 @@ export const SingleRecipe = () => {
                 <div className="col p-1"><img className="rounded shadow-sm" src="image-9.jpg" alt="" /></div>
                 <div className="col p-1"><img className="rounded shadow-sm" src="image-10.jpg" alt="" /></div>
             </div>
-            {recipe ?
+            {recipe ? (
                 <div className="single-recept-container">
-
                     <div className="recept-box">
                         <div className="left-box">
                             <div className="recept-title">
@@ -58,16 +61,13 @@ export const SingleRecipe = () => {
                                     {recipe.ingredients?.map(item => {
                                         return <li>{item}</li>
                                     })}
-
                                 </ul>
-
                             </div>
                         </div>
                     </div>
                     
-                </div>
-                :
-                <img src="loading.svg"></img>
+                </div>)
+                : (<img alt="loading" src="loading.svg"></img>)
             }
         </div>
     )

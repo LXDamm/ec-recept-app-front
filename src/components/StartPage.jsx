@@ -10,10 +10,14 @@ export const StartPage = () => {
         console.log(newRating);
     };
 
-    useEffect(async () => {
-        const recipes = await getAllRecipes();
-        recipes.splice(6)
-        setRecipes(recipes);
+    useEffect(() => {
+        let controller = new AbortController();
+        (async () => {
+            const recipes = await getAllRecipes();
+            recipes.splice(6)
+            setRecipes(recipes);
+        })();
+        return () => controller?.abort();
     }, []);
 
     return (

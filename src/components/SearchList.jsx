@@ -1,7 +1,4 @@
 import {Link} from 'react-router-dom';
-import { useParams } from 'react-router';
-import { useEffect, useHistory, useState } from 'react';
-
 
 export const SearchList = ({filteredItems, id}) =>{
     
@@ -10,8 +7,6 @@ export const SearchList = ({filteredItems, id}) =>{
             <div className="searchBox">
             <Link to={`/recipe/${id}`}><li>{filteredItems}</li></Link>
             </div>
-            
-       
         </>
     )
 }
