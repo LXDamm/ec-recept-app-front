@@ -54,7 +54,7 @@ export const UserProfile = (props) => {
                 <h3>Your Recipe</h3>
                 <div className="cardContainer">
 
-                    {recipes.length > 0 ? (
+                    {recipes && recipes.length > 0 ? (
                         recipes.map((item) => {
                             return (
                                 <Link key={item.id} to={`/recipe/${item.id}`}>
@@ -75,10 +75,10 @@ export const UserProfile = (props) => {
                                     </div>
                                 </Link>
                             );
-                        })
-                    ) : (
+                        })) : (
                         <p>No recipes</p>
-                    )}
+                        )
+                    }
                 </div>  
                 
                 
