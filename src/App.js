@@ -35,7 +35,7 @@ function App() {
     return (
         <div className="container-fluid">
             <Router>
-                <div className="row">
+                <div className="row row-height">
                     {tabletSize ? (
                         <MobileSideBar />
                     ) : (

@@ -15,9 +15,11 @@ const loginAccount = (id, token) => instance.post('/account/login', {
 });
 const getAllRecipes = () => instance.get('/recipe');
 const getRecipe = (id) => instance.get(`/recipe/${id}`);
-
+/* const getRecipeByUser = (id) => instance.get(`/recipe/user/${userid}`);
+ */
 export default {
     loginAccount,
     getAllRecipes,
-    getRecipe
+    getRecipe,
+    
 };
