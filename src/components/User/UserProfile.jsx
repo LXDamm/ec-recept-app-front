@@ -1,13 +1,10 @@
 import './style.css';
 import React, { useEffect, useState } from 'react';
-import account from '../../services/accountService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-
-
-
+import account from '../../account/account';
 
 export const UserProfile = (props) => {
     const [username, setUsername] = useState(undefined);

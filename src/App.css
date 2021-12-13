@@ -12,7 +12,6 @@ body{
   height: 35px;
 }
 .userIcon{
-  /* padding-right: 5px; */
   font-size: 15px;
   color: #FFFFFF;
 }
@@ -28,9 +27,7 @@ body{
   
 }
 .search-box{
-  /* width: 300px;
-  height: 100px;
-  background: rgb(0, 0, 0); */
+ 
   margin: 0 auto;
   text-align: center;
   color: #e0dede;
@@ -53,6 +50,7 @@ body{
   background: none;
   border: none;
 }
+<<<<<<< HEAD
 /* .row > * {
   padding: 0px !important;
 } */
@@ -70,6 +68,8 @@ body{
 
 
 
+=======
+>>>>>>> 7c1b431bb0d61cff7f0f653a1256add979c2424c
 
 
 .appContainer{
@@ -99,15 +99,6 @@ body{
   text-align: center;
 }
 
-
-/* input{
-  min-height: 20px;
-  border: 1px solid lightgray;
-  border-radius: 8px;
-  outline: none;
-  padding: 0px 10px;
-
-}  */
 
 .main{
   background-color: #f6f6f6;
@@ -284,5 +275,12 @@ a .card{
 .searchBox li{
   list-style-type: none;
   padding: 2px 0px;
+}
+.recept-description{
+  padding-bottom: 14px
+}
+
+.recept-title{
+  padding-top: 10px
 }
 

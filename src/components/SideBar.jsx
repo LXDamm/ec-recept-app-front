@@ -1,16 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopyright, faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchList } from './SearchList';
 import React from 'react';
-
+import account from '../account/account';
 
 
 export const SideBar = ({ recipes }) => {
     const [searchShow, setSearchShow] = useState(false);
     const [searchField, setSearchField] = useState('');
     const [filtered, setFiltered] = useState([]);
+
 
     const handleChange = (e) => {
         setSearchField(e.target.value);
@@ -25,6 +26,8 @@ export const SideBar = ({ recipes }) => {
             setFiltered(filtrec);
         }
     };
+
+   
 
     return (
         <div className="col-lg-2 bg-dark ">
@@ -53,25 +56,33 @@ export const SideBar = ({ recipes }) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/recipe/post" className="link-light">
+                        <Link to="/allrecipes" className="link-light">
                             <h5>Recept</h5>
                         </Link>
-                    </li>
-                    <li>
-                        <Link to="/contact" className="link-light">
-                            <h5>Contact us</h5>
-                        </Link>
+                        
                     </li>
                 </ul>
                 
                 <div className="text-center">
                     <hr className="mt-5"/>
+                {account.loggedIn ? (
+                            <Link to="/profile">
+                                <h5 className="text-wrap link-light">
+                                    <FontAwesomeIcon
+                                        icon={faUserCircle}
+                                        className="userIcon"
+                                        size="lg"
+                                    />
+                                </h5>
+                            </Link>
+                        ) : (
                     <Link to="/login" className="link-light">
                         <h5 className="text-wrap">
                             <FontAwesomeIcon  icon={faUserCircle} className="userIcon" size="lg" />
                             Login/Register
                         </h5>
                     </Link>
+                        )}
                     <p className="copyright">
                         <FontAwesomeIcon icon={faCopyright} /> Powered by Group 2
                     </p>
