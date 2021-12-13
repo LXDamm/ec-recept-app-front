@@ -1,13 +1,15 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopyright, faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchList } from './SearchList';
+
 
 export const SideBar = ({ recipes }) => {
     const [searchShow, setSearchShow] = useState(false);
     const [searchField, setSearchField] = useState('');
     const [filtered, setFiltered] = useState([]);
+
 
     const handleChange = (e) => {
         setSearchField(e.target.value);
@@ -22,6 +24,8 @@ export const SideBar = ({ recipes }) => {
             setFiltered(filtrec);
         }
     };
+
+   
 
     return (
         <div className="col-lg-2 bg-dark ">
@@ -50,14 +54,10 @@ export const SideBar = ({ recipes }) => {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/recipe/post" className="link-light">
+                        <Link to="/allrecipes" className="link-light">
                             <h5>Recept</h5>
                         </Link>
-                    </li>
-                    <li>
-                        <Link to="/contact" className="link-light">
-                            <h5>Contact us</h5>
-                        </Link>
+                        
                     </li>
                 </ul>
                 <hr />

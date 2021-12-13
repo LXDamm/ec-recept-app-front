@@ -3,7 +3,8 @@ import ReactStars from 'react-rating-stars-component';
 import { Link } from 'react-router-dom';
 import { getAllRecipes } from '../services/recipeService';
 
-export const StartPage = () => {
+export const AllRecipes = () =>{
+
     const [recipes, setRecipes] = useState([]);
 
     const ratingChanged = (newRating) => {
@@ -12,14 +13,13 @@ export const StartPage = () => {
 
     useEffect(async () => {
         const recipes = await getAllRecipes();
-        recipes.splice(6)
         setRecipes(recipes);
     }, []);
 
     return (
         <div className="container">
             <div className="header">
-                <h1>Welcome to Mat Recept</h1>
+                <h1>Alla recept</h1>
                 <p>...</p>
             </div>
             <div className="cardContainer">
@@ -57,5 +57,5 @@ export const StartPage = () => {
                 )}
             </div>
         </div>
-    );
-};
+    )
+}

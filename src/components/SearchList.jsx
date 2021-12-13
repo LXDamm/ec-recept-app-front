@@ -4,7 +4,7 @@ import { useEffect, useHistory, useState } from 'react';
 
 
 export const SearchList = ({filteredItems, id}) =>{
-
+    
     return (
         <>
             <div className="searchBox">

@@ -10,12 +10,31 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { SearchList } from './SearchList';
 import account from '../account/account';
 
-export const MobileSideBar = () => {
+export const MobileSideBar = ({recipes}) => {
     const [showSearchBox, setShowSearchBox] = useState(false);
+    const [searchShow, setSearchShow] = useState(false);
+    const [searchField, setSearchField] = useState('');
+    const [filtered, setFiltered] = useState([]);
+
     const handleSearch = () => {
         setShowSearchBox(!showSearchBox);
+    };
+
+    const handleChange = (e) => {
+        setSearchField(e.target.value);
+        const filtrec = recipes.filter((item) => {
+            return item.title.toLowerCase().includes(searchField.toLowerCase());
+        });
+
+        if (e.target.value === '') {
+            setSearchShow(false);
+        } else {
+            setSearchShow(true);
+            setFiltered(filtrec);
+        }
     };
 
     return (
@@ -37,7 +56,18 @@ export const MobileSideBar = () => {
                         className="search-input-popup"
                         type="text"
                         placeholder="search"
+                        onChange={handleChange}
                     />
+                    {searchShow
+                        ? filtered?.map((item) => {
+                              return (
+                                  <SearchList
+                                      filteredItems={item.title}
+                                      id={item.id}
+                                  />
+                              );
+                          })
+                        : null}
                 </div>
             </div>
             <div className="col-1 bg-dark menu-expand ">
@@ -65,41 +95,16 @@ export const MobileSideBar = () => {
                                 size="lg"
                             />
                         </Link>
-                        <Link to="/recipe/post" className="link-light py-2">
+                        <Link to="/allrecipes" className="link-light py-2">
                             <FontAwesomeIcon
                                 icon={faScroll}
                                 className="userIcon"
                                 size="lg"
                             />
                         </Link>
-                        <Link to="/" className="link-light py-2 ">
-                            <FontAwesomeIcon
-                                icon={faPhoneSquareAlt}
-                                className="userIcon"
-                                size="lg"
-                            />
-                        </Link>
+                        
                     </div>
-                    {/* <ul className="nav nav-pills nav-flush flex-column mb-auto text-center text-white">
-                    <li className="nav-item">
-                        <Link to='/' className="nav-link py-3">
-                        <FontAwesomeIcon icon={faHome} className="userIcon" size="lg"/>
-                        </Link>
-                    </li>
-                    <li>
-                        <a href="{#}" className="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-                        <FontAwesomeIcon icon={faScroll} className="userIcon" size="lg"/>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{#}" className="nav-link py-3 " title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                        <FontAwesomeIcon icon={faPhoneSquareAlt} className="userIcon" size="lg"/>
-
-                        </a>
-                    </li>
                     
-                    </ul> */}
                     <div className="py-3 mt-4 text-white text-center">
                         {account.loggedIn ? (
                             <Link to="/profile">
