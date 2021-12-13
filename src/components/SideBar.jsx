@@ -3,6 +3,7 @@ import { faCopyright, faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { SearchList } from './SearchList';
+import account from '../account/account';
 
 
 export const SideBar = ({ recipes }) => {
@@ -62,12 +63,24 @@ export const SideBar = ({ recipes }) => {
                 </ul>
                 <hr />
                 <div className="text-center">
+                {account.loggedIn ? (
+                            <Link to="/profile">
+                                <h5 className="text-wrap link-light">
+                                    <FontAwesomeIcon
+                                        icon={faUserCircle}
+                                        className="userIcon"
+                                        size="lg"
+                                    />
+                                </h5>
+                            </Link>
+                        ) : (
                     <Link to="/login" className="link-light">
                         <h5 className="text-wrap">
                             <FontAwesomeIcon  icon={faUserCircle} className="userIcon" size="lg" />
                             Login/Register
                         </h5>
                     </Link>
+                        )}
                     <p className="copyright">
                         <FontAwesomeIcon icon={faCopyright} /> Powered by Group 2
                     </p>
