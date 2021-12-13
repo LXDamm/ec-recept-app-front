@@ -11,9 +11,12 @@ export const AllRecipes = () =>{
         console.log(newRating);
     };
 
-    useEffect(async () => {
-        const recipes = await getAllRecipes();
-        setRecipes(recipes);
+    useEffect(() => {
+        const fetch = async () => {
+            const recipes = await getAllRecipes();
+            setRecipes(recipes);
+        }
+        fetch();
     }, []);
 
     return (

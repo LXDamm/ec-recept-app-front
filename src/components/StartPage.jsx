@@ -10,10 +10,13 @@ export const StartPage = () => {
         console.log(newRating);
     };
 
-    useEffect(async () => {
-        const recipes = await getAllRecipes();
-        recipes.splice(6)
-        setRecipes(recipes);
+    useEffect(() => {
+        const fetch = async () => {
+            const recipes = await getAllRecipes();
+            recipes.splice(6)
+            setRecipes(recipes);
+        };
+        fetch();
     }, []);
 
     return (

@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCopyright, faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { SearchList } from './SearchList';
 import React from 'react';
 import account from '../account/account';

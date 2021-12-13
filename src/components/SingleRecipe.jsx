@@ -7,9 +7,12 @@ export const SingleRecipe = () => {
     const [recipe, setRecipe] = useState(undefined)
     const { id } = useParams()
 
-    useEffect(async () => {
-        const recipe = await getRecipe(id);
-        setRecipe(recipe);
+    useEffect(() => {
+        const fetch = async () => {
+            const recipe = await getRecipe(id);
+            setRecipe(recipe);
+        }
+        fetch();
     }, [id])
 
     return (
@@ -23,7 +26,7 @@ export const SingleRecipe = () => {
                 <div className="col p-1"><img className="rounded shadow-sm" src="image-9.jpg" alt="" /></div>
                 <div className="col p-1"><img className="rounded shadow-sm" src="image-10.jpg" alt="" /></div>
             </div>
-            {recipe ?
+            {recipe ? (
                 <div className="single-recept-container">
 
                     <div className="recept-box">
@@ -58,16 +61,13 @@ export const SingleRecipe = () => {
                                     {recipe.ingredients?.map(item => {
                                         return <li>{item}</li>
                                     })}
-
                                 </ul>
-
                             </div>
                         </div>
                     </div>
                     
-                </div>
-                :
-                <img src="loading.svg"></img>
+                </div>)
+                : (<img alt="loading" src="loading.svg"></img>)
             }
         </div>
     )

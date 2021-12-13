@@ -9,12 +9,11 @@ import { SingleRecipe } from './components/SingleRecipe';
 import {AllRecipes} from './components/AllRecipes';
 import { AddRecipe } from './components/User/AddRecipe';
 import { MobileSideBar } from './components/MobileSideBar';
-import { getAllRecipes, getRecipe } from './services/recipeService';
+import { getAllRecipes } from './services/recipeService';
 
 function App() {
     const [recipes, setRecipes] = useState(undefined);
     const [tabletSize, setTabletSize] = useState(false);
-    const [allUsers, setAllUsers] = useState('');
     const handleResize = () => {
         if (window.innerWidth < 990) {
             setTabletSize(true);
@@ -27,9 +26,12 @@ function App() {
         window.addEventListener('resize', handleResize);
     }, []);
 
-    useEffect(async () => {
-        const recipes = await getAllRecipes();
-        setRecipes(recipes);
+    useEffect(() => {
+        const fetch = async () => {
+            const recipes = await getAllRecipes();
+            setRecipes(recipes);
+        };
+        fetch();
     }, []);
 
     return (

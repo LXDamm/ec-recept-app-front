@@ -3,7 +3,6 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import {
     faHome,
     faScroll,
-    faPhoneSquareAlt,
     faCopyright,
     faUserCircle,
     faSearch,
