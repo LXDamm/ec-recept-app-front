@@ -7,9 +7,7 @@ export const getAllRecipes = async () => {
 };
 
 export const getRecipe = async (id) => {
-    console.log(id);
     const data = await api.get(`/recipe/${id}`);
-    console.log(data);
     if (data.status === 200) return data.data;
     else return false;
 }
