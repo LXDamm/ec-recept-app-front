@@ -24,7 +24,6 @@ export const AllRecipes = () =>{
         <div className="container">
             <div className="header">
                 <h1>Alla recept</h1>
-                <p>...</p>
             </div>
             <div className="cardContainer">
                 {recipes.length > 0 ? (
