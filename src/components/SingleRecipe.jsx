@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import ReactStars from 'react-rating-stars-component';
 import { useParams } from 'react-router-dom';
 import { getRecipe } from '../services/recipeService';
 
@@ -48,9 +47,6 @@ export const SingleRecipe = () => {
                             </div>
                         </div>
                         <div className="right-box">
-                            <div className="rate-box">
-                                <ReactStars count={5} size={16} activeColor='#ffd700' value={recipe?.rating} />
-                            </div>
                             <div className="ingredients-box">
                                 <h5>
                                     Ingredients

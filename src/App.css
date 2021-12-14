@@ -93,6 +93,7 @@ body{
   margin: auto;
   max-width: 70%;
   font-family: 'Roboto';
+  padding: 15px 0px;
   
 }
 .header p{
@@ -176,7 +177,7 @@ body{
 
 
 .single-recept-container{
-  padding: 0 20px;
+  padding: 20px 20px;
 }
 .album-box{
   background-color: rgb(214, 214, 214);
@@ -201,6 +202,7 @@ body{
 .right-box{
   width: 40%;
   padding-left:12px;
+  padding-top: 15px;
  
 }
 

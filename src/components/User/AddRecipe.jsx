@@ -56,7 +56,7 @@ export const AddRecipe = () =>{
                     <div className="col">
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" id="floatingInput" placeholder="Matnamn" onChange={e => setFormTitle(e.target.value)}/>
-                            <label for="floatingInput">Matnamn</label>
+                            <label for="floatingInput">Title</label>
                         </div>
 
                         <div className="form-floating mb-3">
@@ -66,7 +66,7 @@ export const AddRecipe = () =>{
 
                         <div class="form-floating mb-3">
                             <select class="form-select" id="floatingSelect" aria-label="Floating label select example"  onChange={e => setFormCategory(e.target.value)}>
-                                <option selected>välj matkategori</option>
+                                <option selected>Välj matkategori</option>
                                 <option value="Pizza">Pizza</option>
                                 <option value="Sandwich">Sandwich</option>
                                 <option value="Burgers">Burgers</option>
