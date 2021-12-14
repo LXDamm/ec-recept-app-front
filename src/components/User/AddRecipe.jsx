@@ -44,7 +44,7 @@ export const AddRecipe = () =>{
             description: formDescription,
             categories: formCategory,
             ingredients: ingredients,
-            instructions: instructions,
+            instruction: instructions,
         })
 
     };
@@ -74,7 +74,7 @@ export const AddRecipe = () =>{
                                 <option value="Kebab">Kebab</option>
                                 <option value="Middle Eastern">Middle Eastern</option>
                                 <option value="Vegetarian">Vegetarian</option>
-                                <option value="Chiken">Chiken</option>
+                                <option value="Chiken">Chicken</option>
                             </select>
                             <label for="floatingSelect">Kategorier</label>
                         </div>
@@ -89,7 +89,7 @@ export const AddRecipe = () =>{
 
                         <div className="form-floating mb-3">
                             <input type="text" className="form-control" id="floatingInput" placeholder="Ingredienter"  onChange={e => setFormIngredient(e.target.value)} onKeyDown={addIngredientItemToList}/>
-                            <label for="floatingInput">Ingredienter</label>
+                            <label for="floatingInput">Ingredienser</label>
                             <ul className="d-flex list-unstyled flex-wrap">
                                 {ingredients.map(item =>{
                                     return(
