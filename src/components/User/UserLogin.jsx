@@ -1,27 +1,32 @@
 import './style.css';
-import React,{ useState } from "react";
+import React,{ useContext, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import account from '../../account/account';
+import AccountContext from './AccountContext';
 
 export const UserLogin = (props) => {
     const navigate = useNavigate();
+	const [accountContext, setAccountContext] = useContext(AccountContext);
     const [userName, setUserName] = useState();
     const [mail,setMail] = useState();
     const [pass,setPass] = useState();
 
     const login = async (e) => {
         e.preventDefault();
-        const result = await account.login(mail, pass);
+        const result = await accountContext.login(mail, pass);
         if (result) {
-            navigate('/profile');
+            setAccountContext(accountContext);
+            navigate('/');
+            window.location.reload();
         }
     }
     const register = async (e) => {
         e.preventDefault();
         if (userName && mail && pass) {
-            const result = await account.register(userName, mail, pass);
+            const result = await accountContext.register(userName, mail, pass);
             if (result) {
-                navigate('/profile');
+                setAccountContext(accountContext);
+                navigate('/');
+                window.location.reload();
             }
         }
     }

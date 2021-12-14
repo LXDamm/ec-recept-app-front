@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
-import account from "../../account/account";
+import AccountContext from "./AccountContext";
 
 export const AddRecipe = () =>{
+    const account = useContext(AccountContext);
     const [formTitle, setFormTitle] = useState(undefined);
     const [formDescription, setFormDescription] = useState(undefined);
     const [formCategory, setFormCategory] = useState(undefined);
