@@ -29,7 +29,7 @@ export const StartPage = () => {
                 {recipes.length > 0 ? (
                     recipes?.map((item) => {
                         return (
-                            <Link key={item.id} to={`/recipe/${item.id}`}>
+                            <Link key={item.id} to={`/recipe/${item.id}`} className="recipe-link">
                                 <div className="card">
                                     <div className="topCard">
                                         <img src={item.image} alt="" />
