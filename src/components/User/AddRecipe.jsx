@@ -48,6 +48,7 @@ export const AddRecipe = () =>{
             instruction: instructions,
         })
         navigate('/profile');
+		window.location.reload();
     };
     return(
         <div className="mt-4">
