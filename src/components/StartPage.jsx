@@ -24,7 +24,6 @@ export const StartPage = () => {
         <div className="container pt-5">
             <div className="header">
                 <h1>Welcome to Mat Recept</h1>
-                <p>...</p>
             </div>
             <div className="cardContainer">
                 {recipes.length > 0 ? (
