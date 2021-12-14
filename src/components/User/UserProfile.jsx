@@ -20,7 +20,7 @@ export const UserProfile = (props) => {
             setEmail(account.email);
             setPass(account.pass);
             account.store();
-    
+	
             const result = await getRecipesByUser(account.userId);
 			if (Array.isArray(result)) setRecipes(result);
 			else setRecipes([]);
@@ -71,7 +71,7 @@ export const UserProfile = (props) => {
 				<div className="cardContainer">
 					{Array.isArray(recipes) ? (recipes?.map((item) => {
 							return (
-								<Link key={item.userId} to={`/recipe/${item.id}`}>
+								<Link key={item.id} to={`/recipe/${item.id}`} className="recipe-link">
 						    	<div className="card">
                                 <div className="topCard"><img src={item.image} alt="" /></div>
 							    <div className="bottomCard"><p><strong>{item.title}</strong></p></div>

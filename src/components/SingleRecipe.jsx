@@ -52,9 +52,9 @@ export const SingleRecipe = () => {
                                 <ReactStars count={5} size={16} activeColor='#ffd700' value={recipe?.rating} />
                             </div>
                             <div className="ingredients-box">
-                                <h6>
+                                <h5>
                                     Ingredients
-                                </h6>
+                                </h5>
                             </div>
                             <div className="ingredients-text">
                                 <ul>
