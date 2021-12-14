@@ -14,8 +14,8 @@ export const AllRecipes = () =>{
         let controller = new AbortController();
         (async () => {
             const recipes = await getAllRecipes();
-            console.log(recipes);
-            setRecipes(recipes);
+            if (recipes) setRecipes(recipes);
+            else setRecipes([]);
         })();
         return () => controller?.abort();
     }, []);
