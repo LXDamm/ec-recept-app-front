@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react';
-import ReactStars from 'react-rating-stars-component';
 import { Link } from 'react-router-dom';
 import { getAllRecipes } from '../services/recipeService';
 
 export const AllRecipes = () =>{
     const [recipes, setRecipes] = useState([]);
 
-    const ratingChanged = (newRating) => {
-        console.log(newRating);
-    };
 
     useEffect(() => {
         let controller = new AbortController();
@@ -21,7 +17,7 @@ export const AllRecipes = () =>{
     }, []);
 
     return (
-        <div className="container">
+        <div className="container pt-5">
             <div className="header">
                 <h1>Alla recept</h1>
             </div>
@@ -40,16 +36,7 @@ export const AllRecipes = () =>{
                                                 <strong>{item.title}</strong>
                                             </p>
                                         </div>
-                                        <div className="ratingCard">
-                                            <p>By: {item.user}</p>
-                                            <ReactStars
-                                                count={5}
-                                                onChange={ratingChanged}
-                                                size={16}
-                                                activeColor="#ffd700"
-                                                value={item.rating}
-                                            />
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </Link>
