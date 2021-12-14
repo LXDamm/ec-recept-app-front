@@ -34,6 +34,7 @@ class Account {
     };
     async register(username, email, pass) {
         const result = await registerAccount(username, email, pass);
+        console.log(result);
         if (result) {
             this.token = result.token;
             this.email = email;
@@ -70,6 +71,7 @@ class Account {
             const data = JSON.parse(jsonString);
             this.token = data.token;
             this.username = data.username;
+            this.userId = data.userId;
             this.email = data.email;
             this.loggedIn = data.loggedIn;
         } else {

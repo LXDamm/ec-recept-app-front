@@ -25,6 +25,8 @@ export const UserProfile = () => {
             	setAccountContext(accountContext);
 	
             	const result = await getRecipesByUser(accountContext.userId);
+				console.log(result);
+				console.log(accountContext.userId);
 				if (Array.isArray(result)) setRecipes(result);
 			}
 			else setRecipes([]);
