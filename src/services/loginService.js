@@ -39,6 +39,7 @@ export const registerAccount = async (username, email, pass) => {
 		userId,
         token
 	});
-	if (result.status === 200) return { token, userId, ...result.data };
+	console.log(result.status);
+	if (result.status === 201) return { token, userId, ...result.data };
 	else return false;
 };

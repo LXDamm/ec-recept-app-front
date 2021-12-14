@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { SearchList } from './SearchList';
 import React from 'react';
-import account from '../account/account';
 
-
-export const SideBar = ({ recipes }) => {
+export const SideBar = ({ loggedIn, recipes }) => {
     const [searchShow, setSearchShow] = useState(false);
     const [searchField, setSearchField] = useState('');
     const [filtered, setFiltered] = useState([]);
-
 
     const handleChange = (e) => {
         setSearchField(e.target.value);
@@ -26,8 +23,6 @@ export const SideBar = ({ recipes }) => {
             setFiltered(filtrec);
         }
     };
-
-   
 
     return (
         <div className="col-lg-2 bg-dark ">
@@ -65,7 +60,7 @@ export const SideBar = ({ recipes }) => {
                 
                 <div className="text-center">
                     <hr className="mt-5"/>
-                {account.loggedIn ? (
+                        {loggedIn ? (
                             <Link to="/profile">
                                 <h5 className="text-wrap link-light">
                                     <FontAwesomeIcon
@@ -76,12 +71,12 @@ export const SideBar = ({ recipes }) => {
                                 </h5>
                             </Link>
                         ) : (
-                    <Link to="/login" className="link-light">
-                        <h5 className="text-wrap">
-                            <FontAwesomeIcon  icon={faUserCircle} className="userIcon" size="lg" />
-                            Login/Register
-                        </h5>
-                    </Link>
+                            <Link to="/login" className="link-light">
+                                <h5 className="text-wrap">
+                                    <FontAwesomeIcon  icon={faUserCircle} className="userIcon" size="lg" />
+                                    Login/Register
+                                </h5>
+                            </Link>
                         )}
                     <p className="copyright">
                         <FontAwesomeIcon icon={faCopyright} /> Powered by Group 2

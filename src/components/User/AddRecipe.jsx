@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import axios from "axios";
-import account from "../../account/account";
+import AccountContext from "./AccountContext";
+import { useNavigate } from "react-router";
 
 export const AddRecipe = () =>{
+    const navigate = useNavigate();
+    const [accountContext, setAccountContext] = useContext(AccountContext);
     const [formTitle, setFormTitle] = useState(undefined);
     const [formDescription, setFormDescription] = useState(undefined);
     const [formCategory, setFormCategory] = useState(undefined);
@@ -36,17 +39,15 @@ export const AddRecipe = () =>{
     };
     const handleSubmitForm = (e) => {
         e.preventDefault();
-        account.login(account.email, 'password');
-        
         axios.post(`http://127.0.0.1:3030/recipe`,{
-            token: account.token,
+            token: accountContext.token,
             title: formTitle,
             description: formDescription,
             categories: formCategory,
             ingredients: ingredients,
             instruction: instructions,
         })
-
+        navigate('/profile');
     };
     return(
         <div className="mt-4">

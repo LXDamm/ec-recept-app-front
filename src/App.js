@@ -10,11 +10,15 @@ import { AllRecipes } from './components/AllRecipes';
 import { AddRecipe } from './components/User/AddRecipe';
 import { MobileSideBar } from './components/MobileSideBar';
 import { getAllRecipes } from './services/recipeService';
+import AccountContext from './components/User/AccountContext';
+import Account from './account/account';
 
 function App() {
+    const [accountContext, setAccountContext] = useState(new Account());
     const [recipes, setRecipes] = useState(undefined);
     const [tabletSize, setTabletSize] = useState(false);
 
+    accountContext.restore();
     const handleResize = () => {
         if (window.innerWidth < 990) {
             setTabletSize(true);
@@ -37,19 +41,21 @@ function App() {
     }, []);
 
     return (
+        <div className="App">
+        <AccountContext.Provider value={[accountContext, setAccountContext]}>
         <div className="container-fluid">
             <Router>
                 <div className="row row-height">
                     {tabletSize ? (
-                        <MobileSideBar recipes={recipes} />
+                        <MobileSideBar loggedIn={accountContext.loggedIn} recipes={recipes} />
                     ) : (
-                        <SideBar recipes={recipes} />
+                        <SideBar loggedIn={accountContext.loggedIn} recipes={recipes} />
                     )}
                     <div className={'bg-light ' + (tabletSize ? 'col-11' : 'col-10')}>
                         <Routes>
                             <Route exact path="/" element={<StartPage/>} />
                             <Route path="/login" element={<UserLogin/>} />
-                            <Route path="/profile" element={<UserProfile/>} />
+                            <Route path="/profile" element={accountContext?.loggedIn ? <UserProfile/> : <UserLogin/>} />
                             <Route path="/recipe/:recipeId" element={<SingleRecipe/>} />
                             <Route path="/addrecipe" element={<AddRecipe/>} />
                             <Route path="/allrecipes" element={<AllRecipes/>} />
@@ -57,6 +63,8 @@ function App() {
                     </div>
                 </div>
             </Router>
+        </div>
+        </AccountContext.Provider>
         </div>
     );
 }

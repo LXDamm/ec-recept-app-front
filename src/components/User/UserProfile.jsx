@@ -1,13 +1,14 @@
 import './style.css';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCircle } from '@fortawesome/free-regular-svg-icons';
 import { Link, useNavigate } from 'react-router-dom';
 import { getRecipesByUser } from '../../services/recipeService';
-import account from '../../account/account';
+import AccountContext from './AccountContext';
 
-export const UserProfile = (props) => {
+export const UserProfile = () => {
 	const navigate = useNavigate();
+	const [accountContext, setAccountContext] = useContext(AccountContext);
 	const [username, setUsername] = useState(undefined);
 	const [email, setEmail] = useState(undefined);
 	const [pass, setPass] = useState(undefined);
@@ -16,22 +17,29 @@ export const UserProfile = (props) => {
     useEffect(() => {
         let controller = new AbortController();
         (async () => {
-            setUsername(account.username);
-            setEmail(account.email);
-            setPass(account.pass);
-            account.store();
+			if (accountContext.loggedIn) {
+				setUsername(accountContext.username);
+            	setEmail(accountContext.email);
+            	setPass(accountContext.pass);
+				accountContext.store();
+            	setAccountContext(accountContext);
 	
-            const result = await getRecipesByUser(account.userId);
-			if (Array.isArray(result)) setRecipes(result);
+            	const result = await getRecipesByUser(accountContext.userId);
+				console.log(result);
+				console.log(accountContext.userId);
+				if (Array.isArray(result)) setRecipes(result);
+			}
 			else setRecipes([]);
         })();
         return () => controller?.abort();
-    }, []);
+    }, [accountContext.loggedIn]);
 
 	const handleLogout = (e) => {
 		e.preventDefault();
-		account.logout();
-		navigate('/', {replace: true});
+		accountContext?.logout();
+		setAccountContext(accountContext);
+		navigate('/');
+		window.location.reload();
 	};
 
 	return (
@@ -61,7 +69,7 @@ export const UserProfile = (props) => {
 					<Link to="/addrecipe" class="btn btn-outline-success my-2">
 						Add Recipe
 					</Link>
-					<Link to="/profile" class="btn btn-outline-danger" onClick={(event) => handleLogout(event)}>
+					<Link to="/" class="btn btn-outline-danger" onClick={(event) => handleLogout(event)}>
 						Logout
 					</Link>
 				</div>

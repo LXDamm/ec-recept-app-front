@@ -10,9 +10,8 @@ import {
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { SearchList } from './SearchList';
-import account from '../account/account';
 
-export const MobileSideBar = ({recipes}) => {
+export const MobileSideBar = ({ loggedIn, recipes }) => {
     const [showSearchBox, setShowSearchBox] = useState(false);
     const [searchShow, setSearchShow] = useState(false);
     const [searchField, setSearchField] = useState('');
@@ -102,7 +101,7 @@ export const MobileSideBar = ({recipes}) => {
                     </div>
                     
                     <div className="py-3 mt-4 text-white text-center">
-                        {account.loggedIn ? (
+                        {loggedIn ? (
                             <Link to="/profile">
                                 <h5 className="text-wrap link-light">
                                     <FontAwesomeIcon

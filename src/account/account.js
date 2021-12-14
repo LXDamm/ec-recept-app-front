@@ -21,43 +21,49 @@ class Account {
         this.loggedIn = false;
     };
     async login(email, pass) {
-        this.email = email;
         const result = await loginAccount(email, pass);
         if (result) {
             this.token = result.token;
-            this.loggedIn = true;
+            this.email = email;
             this.username = result.username;
             this.userId = result.userId;
+            this.loggedIn = true;
             this.store();
             return true;
-        }
+        } else return false;
     };
     async register(username, email, pass) {
-        this.email = email;
         const result = await registerAccount(username, email, pass);
+        console.log(result);
         if (result) {
             this.token = result.token;
-            this.loggedIn = true;
+            this.email = email;
             this.username = username;
             this.userId = result.userId;
+            this.loggedIn = true;
             this.store();
             return true;
-        }
+        } else return false;
     }
     logout() {
         this.token = undefined;
-        this.loggedIn = false;
+        this.username = undefined;
         this.userId = undefined;
+        this.email = undefined;
+        this.loggedIn = false;
         localStorage.removeItem('account');
         return true;
     };
     store() {
-        localStorage.setItem('account', JSON.stringify({
-            token: this.token,
-            username: this.username,
-            email: this.email,
-            loggedIn: this.loggedIn
-        }));
+        if (this.loggedIn) {
+            localStorage.setItem('account', JSON.stringify({
+                token: this.token,
+                username: this.username,
+                email: this.email,
+                userId: this.userId,
+                loggedIn: this.loggedIn
+            }));
+        }
     };
     restore() {
         const jsonString = localStorage.getItem('account');
@@ -65,15 +71,20 @@ class Account {
             const data = JSON.parse(jsonString);
             this.token = data.token;
             this.username = data.username;
+            this.userId = data.userId;
             this.email = data.email;
             this.loggedIn = data.loggedIn;
         } else {
+            this.token = undefined;
+            this.username = undefined;
+            this.userId = undefined;
+            this.email = undefined;
             this.loggedIn = false;
         }
     }
 };
 
-const account = new Account();
-account.restore();
+//const account = new Account();
+//account.restore();
 
-export default account;
+export default Account;
