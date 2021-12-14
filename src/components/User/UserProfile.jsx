@@ -71,7 +71,7 @@ export const UserProfile = (props) => {
 				<div className="cardContainer">
 					{Array.isArray(recipes) ? (recipes?.map((item) => {
 							return (
-								<Link key={item.userId} to={`/recipe/${item.userId}`}>
+								<Link key={item.userId} to={`/recipe/${item.id}`}>
 						    	<div className="card">
                                 <div className="topCard"><img src={item.image} alt="" /></div>
 							    <div className="bottomCard"><p><strong>{item.title}</strong></p></div>
